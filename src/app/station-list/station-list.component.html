@@ -1,0 +1,15 @@
+<div class="row">
+  @if (isSpinner) {
+  <app-spinner></app-spinner>
+  } @else {
+  <div class="col-12">
+    <ul>
+      @for (station of stationList; track station.id_stacji) {
+      <li>
+        {{ station.stacja }}
+      </li>
+      } @empty { Empty list of users }
+    </ul>
+  </div>
+  }
+</div>
