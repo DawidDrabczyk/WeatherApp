@@ -8,16 +8,20 @@
     <div class="input-group mb-3">
       <input
         type="text"
-        class="form-control"
+        class="form-control input_search"
         placeholder="Wyszukaj stację"
+        [(ngModel)]="searchPhrase"
         aria-label="statnioName"
         aria-describedby="basic-addon1"
         (input)="searchStationByName($event)"
       />
+      @if (searchPhrase && searchPhrase.length > 0) {
+      <i class="fa-solid fa-xmark" (click)="clearSearcher()"></i>
+      }
     </div>
   </div>
 
-  <div class="col-12">
+  <div class="col-12 list_container">
     <ul class="list-group">
       @for (station of stationList; track station.id_stacji) {
       <li class="list-group-item" (click)="getStationById(station.id_stacji)">

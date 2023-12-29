@@ -27,4 +27,22 @@
 
 .searcher {
   margin: 1em 0;
+
+  .input_search {
+    position: relative;
+  }
+  .fa-xmark {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.list_container {
+  margin-bottom: 3em;
 }

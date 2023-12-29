@@ -4,11 +4,33 @@ body {
 }
 
 .header {
+  position: relative;
+  padding: 2em;
   text-align: center;
+  background-image: url("../assets/img/clouds-2085112_1280.jpg");
+  background-position: center;
+
+  .header_text {
+    color: #fff;
+    z-index: 1;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+      1px 1px 0 black;
+    font-family: "Bree Serif", serif;
+  }
+
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }
 
 ::ng-deep .cdk-overlay-pane {
   position: absolute !important;
   top: 5vh !important;
   left: 10vw;
+  z-index: 100;
 }

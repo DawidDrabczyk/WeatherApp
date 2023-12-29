@@ -7,11 +7,12 @@ import { catchError, finalize, throwError } from 'rxjs';
 import { StationItemComponent } from './station-item/station-item.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { NgClass } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-station-list',
   standalone: true,
-  imports: [SpinnerComponent, NgClass],
+  imports: [SpinnerComponent, NgClass, FormsModule],
   templateUrl: './station-list.component.html',
   styleUrl: './station-list.component.scss',
   providers: [HttpClient],
@@ -19,11 +20,12 @@ import { NgClass } from '@angular/common';
 export class StationListComponent implements OnInit {
   public stationList: Array<StationDto> = [];
   public filteredList: Array<StationDto> = [];
+
   public isSpinner: boolean = false;
   public showBackdrop: boolean = false;
+  public searchPhrase: string | undefined;
+
   public dialogRef: MatDialogRef<StationItemComponent> | undefined;
-  public itemsPerPage = 5;
-  public currentPage = 1;
 
   constructor(
     private weatherService: WeatherService,
@@ -69,8 +71,9 @@ export class StationListComponent implements OnInit {
     );
   }
 
-  public pageChanged(event: any): void {
-    this.currentPage = event.page;
+  public clearSearcher(): void {
+    this.searchPhrase = '';
+    this.getStationList();
   }
 
   private getStationList(): void {

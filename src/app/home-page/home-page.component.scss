@@ -4,6 +4,15 @@
 
 .small_desc {
   position: absolute;
-  bottom: 1vh;
-  right: 3em;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 0.5em 0;
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  .small_text {
+    margin-right: 2em;
+    margin-bottom: 1em;
+  }
 }

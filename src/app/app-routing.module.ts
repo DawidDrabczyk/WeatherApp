@@ -12,6 +12,10 @@ const routes: Route[] = [
     path: 'list',
     component: StationListComponent
   },
+  {
+    path: 'hydrology-data',
+    component: StationListComponent
+  },
 ];
 
 @NgModule({
