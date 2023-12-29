@@ -1,11 +1,27 @@
 <div class="row">
   @if (isSpinner) {
-  <app-spinner></app-spinner>
+  <div class="col-12 spinner_container">
+    <app-spinner></app-spinner>
+  </div>
   } @else {
   <div class="col-12">
-    <ul>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Wyszukaj stację"
+        aria-label="statnioName"
+        aria-describedby="basic-addon1"
+        appDebounceKeyUp
+        (debounceKeyUp)="searchStationByName($event)"
+      />
+    </div>
+  </div>
+
+  <div class="col-12">
+    <ul class="list-group">
       @for (station of stationList; track station.id_stacji) {
-      <li>
+      <li class="list-group-item" (click)="getStationById(station.id_stacji)">
         {{ station.stacja }}
       </li>
       } @empty { Empty list of users }

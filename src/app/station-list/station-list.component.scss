@@ -1,0 +1,12 @@
+.spinner_container {
+  text-align: center;
+}
+
+.list-group-item {
+  &:hover {
+    color: #fff;
+    background-color: #0a58ca;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+}
