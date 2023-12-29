@@ -1,0 +1,25 @@
+.header_container {
+  h3 {
+    padding: 1em;
+    text-align: center;
+  }
+}
+
+.btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.list-group-item-action:focus,
+.list-group-item-action:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.fa-sun {
+  margin-left: 2em;
+  font-size: 2rem;
+  color: yellow;
+}

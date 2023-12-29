@@ -1,5 +1,14 @@
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
 .header {
-  font-size: 2rem;
-  font-weight: bold;
   text-align: center;
+}
+
+::ng-deep .cdk-overlay-pane {
+  position: absolute !important;
+  top: 5vh !important;
+  left: 10vw;
 }

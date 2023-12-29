@@ -8,5 +8,5 @@ export interface StationDto {
   stacja: string;
   suma_opadu: string;
   temperatura: string;
-  wilgotnosc_powietrza: string;
+  wilgotnosc_wzgledna: string;
 }

@@ -1,10 +1,10 @@
-<div class="row">
+<div class="row" [ngClass]="{ hidden_background: showBackdrop }">
   @if (isSpinner) {
   <div class="col-12 spinner_container">
     <app-spinner></app-spinner>
   </div>
   } @else {
-  <div class="col-12">
+  <div class="col-12 searcher">
     <div class="input-group mb-3">
       <input
         type="text"
@@ -12,8 +12,7 @@
         placeholder="Wyszukaj stację"
         aria-label="statnioName"
         aria-describedby="basic-addon1"
-        appDebounceKeyUp
-        (debounceKeyUp)="searchStationByName($event)"
+        (input)="searchStationByName($event)"
       />
     </div>
   </div>
@@ -29,3 +28,7 @@
   </div>
   }
 </div>
+@if (showBackdrop) {
+
+<div class="backdrop"></div>
+}
