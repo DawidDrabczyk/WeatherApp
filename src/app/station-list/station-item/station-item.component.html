@@ -2,9 +2,6 @@
   <div class="col-12">
     <h3>
       {{ stationItem?.stacja | uppercase }}
-      <span>
-        <i class="fa-solid fa-sun"></i>
-      </span>
     </h3>
   </div>
 </div>
@@ -21,7 +18,7 @@
         <div>Wilgotność: {{ stationItem?.wilgotnosc_wzgledna }} %</div>
         <div>Suma opadu: {{ stationItem?.suma_opadu }} %</div>
         <div>Prędkość wiatru: {{ stationItem?.predkosc_wiatru }} km/h</div>
-        <div>Kierunek wiatru: {{ stationItem?.kierunek_wiatru }} %</div>
+        <div>Kierunek wiatru: {{ stationItem?.kierunek_wiatru }}°</div>
       </div>
     </div>
   </div>

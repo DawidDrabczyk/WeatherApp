@@ -6,15 +6,11 @@ import { StationListComponent } from './station-list/station-list.component';
 const routes: Route[] = [
   {
     path: '',
-    component: HomePageComponent
+    component: HomePageComponent,
   },
   {
     path: 'list',
-    component: StationListComponent
-  },
-  {
-    path: 'hydrology-data',
-    component: StationListComponent
+    component: StationListComponent,
   },
 ];
 
