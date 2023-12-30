@@ -18,3 +18,7 @@ Angular Material 17
 ## API
 
 I used official IMGW API from "https://danepubliczne.imgw.pl/apiinfo"
+
+## DEPLOY
+
+https://angular-weather-app.onrender.com/
