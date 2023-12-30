@@ -9,6 +9,7 @@ body {
   text-align: center;
   background-image: url("../assets/img/clouds-2085112_1280.jpg");
   background-position: center;
+  background-repeat: no-repeat;
 
   .header_text {
     color: #fff;
@@ -25,6 +26,16 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
+
+    @media (min-width: 1400px) {
+      left: 1.3vw;
+      width: 97%;
+    }
+
+    @media (min-width: 1800px) {
+      left: 1.1vw;
+      width: 96.8%;
+    }
   }
 }
 

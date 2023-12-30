@@ -8,8 +8,12 @@
   right: 0;
   width: 100%;
   padding: 0.5em 0;
-  text-align: right;
+  text-align: center;
   background-color: rgba(0, 0, 0, 0.1);
+
+  @media (min-width: 992px) {
+    text-align: right;
+  }
 
   .small_text {
     margin-right: 2em;

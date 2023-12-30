@@ -8,9 +8,16 @@
 
 <div class="info_container">
   <div class="list-group">
-    <div class="list-group-item list-group-item-action" aria-current="true">
+    <div
+      class="list-group-item list-group-item-action"
+      [ngStyle]="{
+        'background-color': getBackgroundColor()
+      }"
+      aria-current="true"
+    >
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">Temperatura: {{ stationItem?.temperatura }}°C</h5>
+
         <small>{{ stationItem?.data_pomiaru | date : "dd.MM.yyyy" }}</small>
       </div>
       <div class="mb-1">
