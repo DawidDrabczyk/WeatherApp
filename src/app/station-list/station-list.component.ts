@@ -34,10 +34,6 @@ export class StationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStationList();
-
-    this.weatherService
-      .getWeatherByCityName('london')
-      .subscribe((res) => console.log(res));
   }
 
   public getStationById(stationId: string): void {

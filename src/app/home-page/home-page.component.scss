@@ -18,5 +18,15 @@
   .small_text {
     margin-right: 2em;
     margin-bottom: 1em;
+    padding: 1em;
   }
+}
+
+.option {
+  padding: 1em;
+}
+
+.list_link:hover {
+  cursor: pointer;
+  color: #0d6efd;
 }

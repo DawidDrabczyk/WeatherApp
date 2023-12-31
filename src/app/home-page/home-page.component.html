@@ -3,14 +3,21 @@
     <h3>Witaj w aplikacji pogodowej WeatherApp!</h3>
   </div>
 
-  <div class="col-12">
-    Przejdź do listy i wybierz konkretną stację, aby sprawdzić informacje
-    pogodowe.
+  <div class="col-12 option">
+    Przejdź do <span class="list_link" routerLink="/list">listy</span> i wybierz
+    konkretną stację, aby sprawdzić informacje pogodowe.
+  </div>
+
+  <div class="col-12 option">
+    Jeżeli chcesz sprawdzić dane pogodowe dla konkretnej miejscowości przejdź do
+    odpowiedniej zakładki lub kliknij
+    <span class="list_link" routerLink="/weather-data">tutaj</span>.
   </div>
 </div>
 <small class="small_desc">
   <span class="small_text">
     Lista stacji jest pobierana z Państwowego Instytutu Badawczego
-    <strong>IMGW.</strong>
+    <strong>IMGW</strong>, natomiast dane pogodowe są pobierane z
+    <strong>Opean Weather Map.</strong>
   </span>
 </small>

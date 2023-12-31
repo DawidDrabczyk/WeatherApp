@@ -1,1 +1,31 @@
-<p>weather-item works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 header">
+      <h4>Uzupełnij pole tekstowe i wciśnij enter</h4>
+    </div>
+    <div class="col-12">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Wpisz miejscowość</span
+        >
+        <input
+          #input_data
+          type="text"
+          class="form-control"
+          [(ngModel)]="cityName"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          (keyup.enter)="getWeatherByCityName(cityName)"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="isSpinner" class="col-12 spinner_container">
+      <app-spinner></app-spinner>
+    </div>
+
+    <div *ngIf="errorMessage" class="error_form">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>
