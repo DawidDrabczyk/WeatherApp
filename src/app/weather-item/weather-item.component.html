@@ -15,8 +15,45 @@
           [(ngModel)]="cityName"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default"
-          (keyup.enter)="getWeatherByCityName(cityName)"
+          (keyup.enter)="getWeatherByCityName(cityName, units)"
         />
+      </div>
+    </div>
+
+    <div class="col-12 radio_container">
+      <div>Wybierz skalę temperatury</div>
+      <div class="form-check" (click)="clearData()">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="tempUnit"
+          id="celsius"
+          value="metric"
+          [(ngModel)]="units"
+        />
+        <label class="form-check-label" for="celsius"> Celsius </label>
+      </div>
+      <div class="form-check" (click)="clearData()">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="tempUnit"
+          id="fahrenheit"
+          value="imperial"
+          [(ngModel)]="units"
+        />
+        <label class="form-check-label" for="fahrenheit"> Fahrenheit </label>
+      </div>
+      <div class="form-check" (click)="clearData()">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="tempUnit"
+          id="kelvin"
+          value="standard"
+          [(ngModel)]="units"
+        />
+        <label class="form-check-label" for="kelvin"> Kelvin </label>
       </div>
     </div>
 
@@ -26,6 +63,72 @@
 
     <div *ngIf="errorMessage" class="error_form">
       {{ errorMessage }}
+    </div>
+
+    <div *ngIf="weatherItem" class="card">
+      <div class="img_container">
+        <img
+          [src]="weatherIcon"
+          class="card-img-top weather_icon"
+          [alt]="weatherItem.name"
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ weatherItem.name | uppercase }}</h5>
+        <p class="card-text">
+          Aktualne dane pogodowe
+          <strong>{{
+            weatherItem.dt * 1000 | date : "dd.MM.yyyy hh:MM"
+          }}</strong>
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Temperatura:</strong> {{ weatherItem.main.temp }} stopni w
+          skali
+          <span [ngSwitch]="units">
+            <span *ngSwitchCase="'metric'">Celsiusa</span>
+            <span *ngSwitchCase="'imperial'">Fahrenheita</span>
+            <span *ngSwitchCase="'standard'">Kelvina</span>
+          </span>
+        </li>
+        <li class="list-group-item">
+          <strong>Temperatura maksymalna:</strong>
+          {{ weatherItem.main.temp_max }} °
+        </li>
+        <li class="list-group-item">
+          <strong>Temperatura minimalna:</strong>
+          {{ weatherItem.main.temp_min }} °
+        </li>
+        <li class="list-group-item">
+          <strong>Ciśnienie:</strong> {{ weatherItem.main.pressure }} hPa
+        </li>
+        <li class="list-group-item">
+          <strong>Wilgotność:</strong> {{ weatherItem.main.humidity }} %
+        </li>
+        <li class="list-group-item">
+          <strong>Prędkość wiartu:</strong> {{ weatherItem.wind.speed }} m/s
+        </li>
+        <li class="list-group-item">
+          <strong>Prędkość podmuchów wiartu:</strong>
+          {{ weatherItem.wind.gust }} m/s
+        </li>
+        <li class="list-group-item">
+          <strong>Zachmurzenie:</strong>
+          {{ weatherItem.clouds.all }} %
+        </li>
+        <li class="list-group-item">
+          <strong>Wschód słońca:</strong>
+          {{ weatherItem.sys.sunrise * 1000 | date : "dd.MM.yyyy hh:MM" }}
+        </li>
+        <li class="list-group-item">
+          <strong>Zachód słońca:</strong>
+          {{ weatherItem.sys.sunset * 1000 | date : "dd.MM.yyyy hh:MM" }}
+        </li>
+      </ul>
+      <div class="card-body clear_link">
+        <a class="card-link" (click)="clearData()">Wyczyść</a>
+      </div>
     </div>
   </div>
 </div>

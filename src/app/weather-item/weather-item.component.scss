@@ -6,6 +6,29 @@
   text-align: center;
 }
 
-.error_form{
-    color: #D64646;
+.error_form {
+  color: #d64646;
+}
+
+.img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .weather_icon {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.radio_container {
+  margin-bottom: 1em;
+}
+
+.clear_link:hover {
+  cursor: pointer;
+}
+
+.row {
+  margin-bottom: 3em;
 }

@@ -35,13 +35,13 @@ export class StationItemComponent implements OnInit {
   public getBackgroundColor(): string | null {
     if (this.temperature) {
       if (this.temperature <= 0) {
-        return '#729ABB';
+        return '#BDD3E6';
       } else if (this.temperature > 0 && this.temperature <= 13) {
-        return '#9BBAD3';
+        return '#A8B8C4';
       } else if (this.temperature > 13 && this.temperature <= 25) {
-        return '#F3D589';
+        return '#F0E4C6';
       } else if (this.temperature > 25) {
-        return '#FF8585';
+        return '#FDBDBD';
       }
     }
     return 'transparent';

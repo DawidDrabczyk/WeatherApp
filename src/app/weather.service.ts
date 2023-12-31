@@ -24,8 +24,15 @@ export class WeatherService {
     return this.http.get<StationDto>(`${this.url}/synop/id/${stationId}`);
   }
 
-  public getWeatherByCityName(city: string): Observable<WeatherItemDto> {
-    let params = new HttpParams().set('q', city).set('appid', this.apiKey);
+  public getWeatherByCityName(
+    city: string,
+    tempUnit: string
+  ): Observable<WeatherItemDto> {
+    let params = new HttpParams()
+      .set('q', city)
+      .set('appid', this.apiKey)
+      .set('lang', 'pl')
+      .set('units', tempUnit);
 
     return this.http.get<WeatherItemDto>(`${this.ulrCurrentWeather}`, {
       params: params,

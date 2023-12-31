@@ -50,4 +50,5 @@ export interface WeatherElement {
 export interface Wind {
   deg: number;
   speed: number;
+  gust: number;
 }
