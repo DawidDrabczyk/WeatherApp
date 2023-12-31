@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { StationDto } from '../station-dto.model';
+import { StationDto } from '../../models/station-dto.model';
 import { DatePipe, NgStyle, UpperCasePipe } from '@angular/common';
 
 @Component({

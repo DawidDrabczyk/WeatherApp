@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { HttpClient } from '@angular/common/http';
-import { StationDto } from './station-dto.model';
+import { StationDto } from '../models/station-dto.model';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { catchError, finalize, throwError } from 'rxjs';
 import { StationItemComponent } from './station-item/station-item.component';
@@ -34,6 +34,10 @@ export class StationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStationList();
+
+    this.weatherService
+      .getWeatherByCityName('london')
+      .subscribe((res) => console.log(res));
   }
 
   public getStationById(stationId: string): void {

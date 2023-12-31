@@ -1,13 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { StationDto } from './station-list/station-dto.model';
+import { StationDto } from './models/station-dto.model';
+import { WeatherItemDto } from './models/weather-item-dto.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
   private url: string = 'https://danepubliczne.imgw.pl/api/data';
+
+  private apiKey: string = '1b99f2272edc02a59db20170fb27bc32';
+  private ulrCurrentWeather: string =
+    'https://api.openweathermap.org/data/2.5/weather';
 
   constructor(private http: HttpClient) {}
 
@@ -17,5 +22,13 @@ export class WeatherService {
 
   public getStationById(stationId: string): Observable<StationDto> {
     return this.http.get<StationDto>(`${this.url}/synop/id/${stationId}`);
+  }
+
+  public getWeatherByCityName(city: string): Observable<WeatherItemDto> {
+    let params = new HttpParams().set('q', city).set('appid', this.apiKey);
+
+    return this.http.get<WeatherItemDto>(`${this.ulrCurrentWeather}`, {
+      params: params,
+    });
   }
 }
