@@ -78,7 +78,7 @@
         <p class="card-text">
           Aktualne dane pogodowe
           <strong>{{
-            weatherItem.dt * 1000 | date : "dd.MM.yyyy hh:MM"
+            weatherItem.dt * 1000 | date : "dd.MM.yyyy HH:mm"
           }}</strong>
         </p>
       </div>
@@ -119,11 +119,11 @@
         </li>
         <li class="list-group-item">
           <strong>Wschód słońca:</strong>
-          {{ weatherItem.sys.sunrise * 1000 | date : "dd.MM.yyyy hh:MM" }}
+          {{ weatherItem.sys.sunrise * 1000 | date : "dd.MM.yyyy HH:mm" }}
         </li>
         <li class="list-group-item">
           <strong>Zachód słońca:</strong>
-          {{ weatherItem.sys.sunset * 1000 | date : "dd.MM.yyyy hh:MM" }}
+          {{ weatherItem.sys.sunset * 1000 | date : "dd.MM.yyyy HH:mm" }}
         </li>
       </ul>
       <div class="card-body clear_link">

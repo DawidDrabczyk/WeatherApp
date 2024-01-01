@@ -55,7 +55,10 @@ export class WeatherItemComponent implements OnInit {
         finalize(() => {
           this.isSpinner = false;
           this.cityName = '';
-          this.setInputFocus();
+          console.log(window.innerWidth);
+          if (window.innerWidth < 1200) {
+            this.unsetInputFocus();
+          }
         }),
         catchError((err) => {
           this.errorMessage = `Nie znaleziono miejscowości ${this.cityName}!`;
@@ -77,5 +80,9 @@ export class WeatherItemComponent implements OnInit {
 
   private setInputFocus(): void {
     this.inputData.nativeElement.focus();
+  }
+
+  private unsetInputFocus(): void {
+    this.inputData.nativeElement.blur();
   }
 }
