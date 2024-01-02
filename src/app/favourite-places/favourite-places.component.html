@@ -48,6 +48,12 @@
           {{ city.sys.sunset * 1000 | date : "dd.MM.yyyy HH:mm" }}
         </div>
       </div>
+      <div
+        class="btn btn-outline-danger delete_btn"
+        (click)="removeFromFavourite(city)"
+      >
+        Usuń z ulubionych
+      </div>
     </div>
   </div>
 </div>
