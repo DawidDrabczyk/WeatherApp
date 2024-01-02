@@ -19,4 +19,9 @@
       >Dane pogodowe</a
     >
   </li>
+  <li *ngIf="favouriteItems && favouriteItems.length > 0" class="nav-item">
+    <a class="nav-link" routerLinkActive="active" routerLink="/favourite"
+      >Ulubione</a
+    >
+  </li>
 </ul>

@@ -32,3 +32,18 @@
 .row {
   margin-bottom: 3em;
 }
+
+.header_item {
+  display: flex;
+  align-items: center;
+
+  .favourite_icon {
+    margin-left: 2em;
+
+    em {
+      color: yellow;
+      text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+        1px 1px 0 black;
+    }
+  }
+}

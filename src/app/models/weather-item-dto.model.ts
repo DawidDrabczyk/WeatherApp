@@ -12,6 +12,7 @@ export interface WeatherItemDto {
   visibility: number;
   weather: WeatherElement[];
   wind: Wind;
+  isFavourite?: boolean;
 }
 
 export interface Clouds {

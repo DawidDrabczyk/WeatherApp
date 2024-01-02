@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { StationDto } from './models/station-dto.model';
 import { WeatherItemDto } from './models/weather-item-dto.model';
 
@@ -13,6 +13,9 @@ export class WeatherService {
   private apiKey: string = '1b99f2272edc02a59db20170fb27bc32';
   private ulrCurrentWeather: string =
     'https://api.openweathermap.org/data/2.5/weather';
+
+  public favouritePlacesArray = new ReplaySubject<Array<WeatherItemDto>>(1);
+  public favouriteItems: Array<WeatherItemDto> = [];
 
   constructor(private http: HttpClient) {}
 

@@ -74,7 +74,10 @@
         />
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{ weatherItem.name | uppercase }}</h5>
+        <h5 class="card-title header_item">
+          {{ weatherItem.name | uppercase }}
+          <span *ngIf="weatherItem.isFavourite" class="favourite_icon"><em class="fa-solid fa-star"></em></span>
+        </h5>
         <p class="card-text">
           Aktualne dane pogodowe
           <strong>{{
@@ -128,6 +131,9 @@
       </ul>
       <div class="card-body clear_link">
         <a class="card-link" (click)="clearData()">Wyczyść</a>
+        <a class="card-link" (click)="addToFavourite(weatherItem)"
+          >Dodaj do ulubionych</a
+        >
       </div>
     </div>
   </div>

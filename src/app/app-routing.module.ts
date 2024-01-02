@@ -3,6 +3,7 @@ import { Route, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { StationListComponent } from './station-list/station-list.component';
 import { WeatherItemComponent } from './weather-item/weather-item.component';
+import { FavouritePlacesComponent } from './favourite-places/favourite-places.component';
 
 const routes: Route[] = [
   {
@@ -16,6 +17,10 @@ const routes: Route[] = [
   {
     path: 'weather-data',
     component: WeatherItemComponent,
+  },
+  {
+    path: 'favourite',
+    component: FavouritePlacesComponent,
   },
 ];
 

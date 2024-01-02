@@ -29,8 +29,11 @@ import {
 })
 export class WeatherItemComponent implements OnInit {
   public isSpinner: boolean = false;
-  public cityName!: string;
+  public isFavourite: boolean = false;
+
   public weatherItem!: WeatherItemDto | null;
+
+  public cityName!: string;
   public errorMessage!: string | null;
   public weatherIcon!: string;
   public units!: string;
@@ -55,7 +58,6 @@ export class WeatherItemComponent implements OnInit {
         finalize(() => {
           this.isSpinner = false;
           this.cityName = '';
-          console.log(window.innerWidth);
           if (window.innerWidth < 1200) {
             this.unsetInputFocus();
           }
@@ -67,9 +69,9 @@ export class WeatherItemComponent implements OnInit {
       )
       .subscribe((res) => {
         this.weatherItem = res;
+        this.markAsFavourite();
         this.weatherIcon = `https://openweathermap.org/img/wn/${this.weatherItem.weather[0].icon}@2x.png`;
         this.errorMessage = null;
-        console.log(this.weatherItem);
       });
   }
 
@@ -78,11 +80,34 @@ export class WeatherItemComponent implements OnInit {
     this.weatherItem = null;
   }
 
+  public addToFavourite(weatherItem: WeatherItemDto): void {
+    if (!this.weatherService.favouriteItems.includes(weatherItem)) {
+      this.weatherService.favouriteItems.push(weatherItem);
+      weatherItem.isFavourite = true;
+    }
+
+    console.log(this.weatherService.favouriteItems);
+    this.weatherService.favouritePlacesArray.next(
+      this.weatherService.favouriteItems
+    );
+  }
+
   private setInputFocus(): void {
     this.inputData.nativeElement.focus();
   }
 
   private unsetInputFocus(): void {
     this.inputData.nativeElement.blur();
+  }
+
+  private markAsFavourite(): void {
+    if (
+      this.weatherItem &&
+      this.weatherService.favouriteItems.some(
+        (item) => item.id === this.weatherItem?.id
+      )
+    ) {
+      this.weatherItem.isFavourite = true;
+    }
   }
 }
