@@ -24,8 +24,6 @@ export class StationItemComponent implements OnInit {
     if (this.stationItem && this.stationItem.temperatura) {
       this.temperature = this.setTemperatureNumberType();
     }
-
-    console.log(this.temperature);
   }
 
   public closeDialog(): void {

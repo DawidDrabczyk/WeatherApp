@@ -72,6 +72,9 @@ export class WeatherItemComponent implements OnInit {
         this.markAsFavourite();
         this.weatherIcon = `https://openweathermap.org/img/wn/${this.weatherItem.weather[0].icon}@2x.png`;
         this.errorMessage = null;
+        setTimeout(() => {
+          window.scrollTo(0, document.body.scrollHeight);
+        }, 500);
       });
   }
 
@@ -84,12 +87,29 @@ export class WeatherItemComponent implements OnInit {
     if (!this.weatherService.favouriteItems.includes(weatherItem)) {
       this.weatherService.favouriteItems.push(weatherItem);
       weatherItem.isFavourite = true;
+      window.scrollTo(0, 0);
+      this.setInputFocus();
     }
 
-    console.log(this.weatherService.favouriteItems);
     this.weatherService.favouritePlacesArray.next(
       this.weatherService.favouriteItems
     );
+  }
+
+  public removeFromFavourite(weatherItem: WeatherItemDto): void {
+    const index = this.weatherService.favouriteItems.findIndex(
+      (item) => item.id === weatherItem.id
+    );
+
+    if (index !== -1) {
+      this.weatherService.favouriteItems.splice(index, 1);
+      weatherItem.isFavourite = false;
+      window.scrollTo(0, 0);
+
+      this.weatherService.favouritePlacesArray.next(
+        this.weatherService.favouriteItems
+      );
+    }
   }
 
   private setInputFocus(): void {
