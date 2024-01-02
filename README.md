@@ -5,10 +5,9 @@ WeatherApp with which you can check weather data from IMGW weather stations or c
 ## Stack technology
 
 Angular 17,
-Angular Material,
 Angular Router,
 Angular HTTP,
-RXJS
+RXJS,
 
 ## Styles
 
