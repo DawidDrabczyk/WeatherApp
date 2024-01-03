@@ -1,32 +1,41 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      aria-current="page"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      routerLink="/"
-      >Strona główna</a
-    >
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="/list"
-      >Lista stacji</a
-    >
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="/weather-data"
-      >Dane pogodowe</a
-    >
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="/webcamera"
-      >Webcamera TV</a
-    >
-  </li>
-  <li *ngIf="favouriteItems && favouriteItems.length > 0" class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="/favourite"
-      >Ulubione</a
-    >
-  </li>
-</ul>
+<nav class="navbar">
+  <ul class="nav nav-tabs">
+    <a class="navbar-brand" routerLink="/">
+      <img
+        class="logo"
+        src="../../assets/img/logo.jpg"
+        alt="weather app logo"
+      />
+    </a>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        aria-current="page"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/"
+        >Strona główna</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="/list"
+        >Lista stacji</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="/weather-data"
+        >Dane pogodowe</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="/webcamera"
+        >Webcamera TV</a
+      >
+    </li>
+    <li *ngIf="favouriteItems && favouriteItems.length > 0" class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="/favourite"
+        >Ulubione</a
+      >
+    </li>
+  </ul>
+</nav>
