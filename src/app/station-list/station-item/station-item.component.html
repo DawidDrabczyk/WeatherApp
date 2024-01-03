@@ -1,6 +1,10 @@
 <div class="header_container">
   <div class="col-12">
-    <h3>
+    <h3
+      [ngStyle]="{
+        'background-color': getBackgroundColor()
+      }"
+    >
       {{ stationItem?.stacja | uppercase }}
     </h3>
   </div>
@@ -18,20 +22,35 @@
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">Temperatura: {{ stationItem?.temperatura }}°C</h5>
 
-        <small>{{ stationItem?.data_pomiaru | date : "dd.MM.yyyy" }}</small>
+        <small class="info">{{
+          stationItem?.data_pomiaru | date : "dd.MM.yyyy"
+        }}</small>
       </div>
       <div class="mb-1">
-        <div>Ciśnienie powietrza: {{ stationItem?.cisnienie }} hPa</div>
-        <div>Wilgotność: {{ stationItem?.wilgotnosc_wzgledna }} %</div>
-        <div>Suma opadu: {{ stationItem?.suma_opadu }} %</div>
-        <div>Prędkość wiatru: {{ stationItem?.predkosc_wiatru }} km/h</div>
-        <div>Kierunek wiatru: {{ stationItem?.kierunek_wiatru }}°</div>
+        <div class="info">
+          Ciśnienie powietrza: {{ stationItem?.cisnienie }} hPa
+        </div>
+        <div class="info">
+          Wilgotność: {{ stationItem?.wilgotnosc_wzgledna }} %
+        </div>
+        <div class="info">Suma opadu: {{ stationItem?.suma_opadu }} %</div>
+        <div class="info">
+          Prędkość wiatru: {{ stationItem?.predkosc_wiatru }} km/h
+        </div>
+        <div class="info">
+          Kierunek wiatru: {{ stationItem?.kierunek_wiatru }}°
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="btn_container">
+<div
+  class="btn_container"
+  [ngStyle]="{
+    'background-color': getBackgroundColor()
+  }"
+>
   <button type="button" class="btn btn-primary" (click)="closeDialog()">
     Zamknij
   </button>
