@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
-import { StationListComponent } from './station-list/station-list.component';
-import { WeatherItemComponent } from './weather-item/weather-item.component';
-import { FavouritePlacesComponent } from './favourite-places/favourite-places.component';
-import { WebcameraComponent } from './webcamera/webcamera.component';
 
 const routes: Route[] = [
   {
@@ -13,19 +9,31 @@ const routes: Route[] = [
   },
   {
     path: 'list',
-    component: StationListComponent,
+    loadComponent: () =>
+      import('./station-list/station-list.component').then(
+        (mod) => mod.StationListComponent
+      ),
   },
   {
     path: 'weather-data',
-    component: WeatherItemComponent,
+    loadComponent: () =>
+      import('./weather-item/weather-item.component').then(
+        (mod) => mod.WeatherItemComponent
+      ),
   },
   {
     path: 'webcamera',
-    component: WebcameraComponent,
+    loadComponent: () =>
+      import('./webcamera/webcamera.component').then(
+        (mod) => mod.WebcameraComponent
+      ),
   },
   {
     path: 'favourite',
-    component: FavouritePlacesComponent,
+    loadComponent: () =>
+      import('./favourite-places/favourite-places.component').then(
+        (mod) => mod.FavouritePlacesComponent
+      ),
   },
 ];
 
