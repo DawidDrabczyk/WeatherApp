@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WeatherItemDto } from '../models/weather-item-dto.model';
 import { WeatherService } from '../weather.service';
 import {
@@ -10,6 +10,7 @@ import {
   UpperCasePipe,
 } from '@angular/common';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-favourite-places',
@@ -18,13 +19,18 @@ import { Router } from '@angular/router';
   templateUrl: './favourite-places.component.html',
   styleUrl: './favourite-places.component.scss',
 })
-export class FavouritePlacesComponent implements OnInit {
+export class FavouritePlacesComponent implements OnInit, OnDestroy {
   public favouriteItems!: Array<WeatherItemDto>;
+  private subscription?: Subscription;
 
   constructor(private weatherService: WeatherService, private router: Router) {}
 
   ngOnInit(): void {
     this.getFavouriteList();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 
   public removeFromFavourite(weatherItem: WeatherItemDto): void {
@@ -48,8 +54,10 @@ export class FavouritePlacesComponent implements OnInit {
   }
 
   private getFavouriteList(): void {
-    this.weatherService.favouritePlacesArray.subscribe((res) => {
-      this.favouriteItems = res;
-    });
+    this.subscription = this.weatherService.favouritePlacesArray.subscribe(
+      (res) => {
+        this.favouriteItems = res;
+      }
+    );
   }
 }
