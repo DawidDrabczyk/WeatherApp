@@ -1,29 +1,47 @@
 .header_app {
   margin: 1em 0;
+
+  .header {
+    text-align: center;
+
+    @media (min-width: 992px) {
+      text-align: right;
+    }
+  }
 }
 
 .small_desc {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   width: 100%;
   padding: 0.5em 0;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: darkgray;
 
   @media (min-width: 992px) {
     text-align: right;
   }
 
   .small_text {
-    margin-right: 2em;
     margin-bottom: 1em;
     padding: 1em;
+    font-size: 0.6rem;
+
+    @media (min-width: 992px) {
+      margin-right: 2em;
+      font-size: 1rem;
+    }
   }
 }
 
 .option {
   padding: 1em;
+  font-size: 0.7rem;
+
+  @media (min-width: 992px) {
+    font-size: 1rem;
+  }
 }
 
 .list_link:hover {
