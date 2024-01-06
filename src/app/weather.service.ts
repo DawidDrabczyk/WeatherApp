@@ -11,8 +11,7 @@ export class WeatherService {
   private url: string = 'https://danepubliczne.imgw.pl/api/data';
 
   private apiKey: string = '1b99f2272edc02a59db20170fb27bc32';
-  private ulrCurrentWeather: string =
-    'https://api.openweathermap.org/data/2.5/weather';
+  private ulrCurrentWeather: string = 'https://api.openweathermap.org/data/2.5';
 
   public favouritePlacesArray = new ReplaySubject<Array<WeatherItemDto>>(1);
   public favouriteItems: Array<WeatherItemDto> = [];
@@ -37,7 +36,22 @@ export class WeatherService {
       .set('lang', 'pl')
       .set('units', tempUnit);
 
-    return this.http.get<WeatherItemDto>(`${this.ulrCurrentWeather}`, {
+    return this.http.get<WeatherItemDto>(`${this.ulrCurrentWeather}/weather`, {
+      params: params,
+    });
+  }
+
+  public getWeatherForecastByCityName(
+    city: string,
+    tempUnit: string
+  ): Observable<WeatherItemDto> {
+    let params = new HttpParams()
+      .set('q', city)
+      .set('appid', this.apiKey)
+      .set('lang', 'pl')
+      .set('units', tempUnit);
+
+    return this.http.get<WeatherItemDto>(`${this.ulrCurrentWeather}/forecast`, {
       params: params,
     });
   }

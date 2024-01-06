@@ -22,10 +22,24 @@ const routes: Route[] = [
       ),
   },
   {
+    path: 'weather-forecast',
+    loadComponent: () =>
+      import('./weather-forecast/weather-forecast.component').then(
+        (mod) => mod.WeatherForecastComponent
+      ),
+  },
+  {
     path: 'webcamera',
     loadComponent: () =>
       import('./webcamera/webcamera.component').then(
         (mod) => mod.WebcameraComponent
+      ),
+  },
+  {
+    path: 'world-camera',
+    loadComponent: () =>
+      import('./world-camera/world-camera.component').then(
+        (mod) => mod.WorldCameraComponent
       ),
   },
   {
