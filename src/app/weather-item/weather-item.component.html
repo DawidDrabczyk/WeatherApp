@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-12 header">
-      <h4>Uzupełnij pole tekstowe i wciśnij enter</h4>
+      <h4>
+        Aby sprawdzić aktualne dane pogodowe uzupełnij pole tekstowe i wciśnij
+        enter
+      </h4>
     </div>
     <div class="col-12">
       <div class="input-group mb-3">
@@ -76,7 +79,9 @@
       <div class="card-body">
         <h5 class="card-title header_item">
           {{ weatherItem.name | uppercase }}
-          <span *ngIf="weatherItem.isFavourite" class="favourite_icon"><em class="fa-solid fa-star"></em></span>
+          <span *ngIf="weatherItem.isFavourite" class="favourite_icon"
+            ><em class="fa-solid fa-star"></em
+          ></span>
         </h5>
         <p class="card-text">
           Aktualne dane pogodowe
@@ -131,10 +136,16 @@
       </ul>
       <div class="card-body clear_link">
         <a class="card-link" (click)="clearData()">Wyczyść</a>
-        <a *ngIf="!weatherItem.isFavourite" class="card-link" (click)="addToFavourite(weatherItem)"
+        <a
+          *ngIf="!weatherItem.isFavourite"
+          class="card-link"
+          (click)="addToFavourite(weatherItem)"
           >Dodaj do ulubionych</a
         >
-        <a *ngIf="weatherItem.isFavourite" class="card-link" (click)="removeFromFavourite(weatherItem)"
+        <a
+          *ngIf="weatherItem.isFavourite"
+          class="card-link"
+          (click)="removeFromFavourite(weatherItem)"
           >Usuń z ulubionych</a
         >
       </div>

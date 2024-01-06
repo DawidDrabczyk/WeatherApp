@@ -15,16 +15,16 @@ export interface WeatherItemDto {
   isFavourite?: boolean;
 }
 
-export interface Clouds {
+interface Clouds {
   all: number;
 }
 
-export interface Coord {
+interface Coord {
   lat: number;
   lon: number;
 }
 
-export interface Main {
+interface Main {
   feels_like: number;
   humidity: number;
   pressure: number;
@@ -33,7 +33,7 @@ export interface Main {
   temp_min: number;
 }
 
-export interface Sys {
+interface Sys {
   country: string;
   id: number;
   sunrise: number;
@@ -41,14 +41,14 @@ export interface Sys {
   type: number;
 }
 
-export interface WeatherElement {
+interface WeatherElement {
   description: string;
   icon: string;
   id: number;
   main: string;
 }
 
-export interface Wind {
+interface Wind {
   deg: number;
   speed: number;
   gust: number;

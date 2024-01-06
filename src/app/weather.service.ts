@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { StationDto } from './models/station-dto.model';
 import { WeatherItemDto } from './models/weather-item-dto.model';
+import { WeatherForecastItemDto } from './models/weather-forecast-item-dto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -44,14 +45,14 @@ export class WeatherService {
   public getWeatherForecastByCityName(
     city: string,
     tempUnit: string
-  ): Observable<WeatherItemDto> {
+  ): Observable<WeatherForecastItemDto> {
     let params = new HttpParams()
       .set('q', city)
       .set('appid', this.apiKey)
       .set('lang', 'pl')
       .set('units', tempUnit);
 
-    return this.http.get<WeatherItemDto>(`${this.ulrCurrentWeather}/forecast`, {
+    return this.http.get<WeatherForecastItemDto>(`${this.ulrCurrentWeather}/forecast`, {
       params: params,
     });
   }

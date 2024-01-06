@@ -31,12 +31,12 @@ export class WeatherItemComponent implements OnInit {
   public isSpinner: boolean = false;
   public isFavourite: boolean = false;
 
-  public weatherItem!: WeatherItemDto | null;
+  public weatherItem?: WeatherItemDto | null;
 
-  public cityName!: string;
-  public errorMessage!: string | null;
-  public weatherIcon!: string;
-  public units!: string;
+  public cityName?: string;
+  public errorMessage?: string | null;
+  public weatherIcon?: string;
+  public units?: string;
 
   @ViewChild('input_data') inputData!: ElementRef;
 
@@ -49,7 +49,7 @@ export class WeatherItemComponent implements OnInit {
     }, 200);
   }
 
-  public getWeatherByCityName(city: string, units: string): void {
+  public getWeatherByCityName(city: any, units: any): void {
     this.isSpinner = true;
 
     this.weatherService
