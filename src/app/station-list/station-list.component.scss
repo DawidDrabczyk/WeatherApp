@@ -43,7 +43,7 @@
   @media (min-width: 1600px) {
     max-height: 74vh;
   }
-  
+
   @media (min-width: 1800px) {
     max-height: 76vh;
   }
@@ -69,4 +69,8 @@
 
 .list_container {
   margin-bottom: 3em;
+}
+
+.header {
+  margin-bottom: 1em;
 }
