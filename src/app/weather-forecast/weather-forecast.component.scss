@@ -29,18 +29,34 @@
   cursor: pointer;
 }
 
-.item_header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 2em;
+.header_item,
+.sunrise,
+.sunset,
+.population {
+  text-align: center;
 }
 
-.img_wrapper {
-  text-align: center;
+.sunrise {
+  @media (min-width: 768px) {
+    text-align: right;
+  }
+}
 
-  .card-img-top {
-    width: 150px;
+.sunset {
+  @media (min-width: 768px) {
+    text-align: left;
+  }
+}
+
+.card_container {
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+
+  .img_wrapper {
+    text-align: center;
+
+    .card-img-top {
+      width: 150px;
+    }
   }
 }

@@ -71,21 +71,31 @@
 
   <ng-container *ngIf="weatherForecastItem">
     <div class="row">
-      <div class="col-12 item_header">
-        <h2>
+      <div class="col-12">
+        <h2 class="header_item">
           {{ weatherForecastItem.city.name | uppercase }}
           <span class="badge bg-secondary">{{
             weatherForecastItem.city.country
           }}</span>
         </h2>
-        <div>
-          Liczba populacji:
-          {{ weatherForecastItem.city.population }} mieszkańców
-        </div>
+      </div>
+      <div class="col-12 population">
+        <strong>Liczba populacji:</strong>
+        {{ weatherForecastItem.city.population }} mieszkańców
+      </div>
+      <div class="col-12 col-md-6 sunrise">
+        <strong>Wschód słońca:</strong>
+        {{
+          weatherForecastItem.city.sunrise * 1000 | date : "dd.MM.yyyy HH:mm"
+        }}
+      </div>
+      <div class="col-12 col-md-6 sunset">
+        <strong>Zachód słońca:</strong>
+        {{ weatherForecastItem.city.sunset * 1000 | date : "dd.MM.yyyy HH:mm" }}
       </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4 card_container">
       <div class="col" *ngFor="let singleForecast of weatherForecastItem.list">
         <div class="card h-100">
           <div class="img_wrapper">
