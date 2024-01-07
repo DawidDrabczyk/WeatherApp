@@ -50,7 +50,7 @@
 
 .card_container {
   margin-top: 0.5em;
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 
   .img_wrapper {
     text-align: center;
@@ -59,4 +59,8 @@
       width: 150px;
     }
   }
+}
+
+.forecast_date {
+  color: #0d6efd;
 }

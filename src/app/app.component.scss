@@ -3,6 +3,10 @@ body {
   min-height: 100vh;
 }
 
+.container {
+  margin-bottom: 2em;
+}
+
 .header {
   position: relative;
   padding: 2em;
@@ -35,6 +39,31 @@ body {
     @media (min-width: 1800px) {
       left: 1.1vw;
       width: 96.8%;
+    }
+  }
+}
+
+.small_desc {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 0.5em 0;
+  text-align: center;
+  background-color: darkgray;
+
+  @media (min-width: 992px) {
+    text-align: right;
+  }
+
+  .small_text {
+    margin-bottom: 1em;
+    padding: 1em;
+    font-size: 0.6rem;
+
+    @media (min-width: 992px) {
+      margin-right: 2em;
+      font-size: 1rem;
     }
   }
 }

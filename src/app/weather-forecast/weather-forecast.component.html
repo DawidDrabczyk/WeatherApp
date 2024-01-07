@@ -74,7 +74,7 @@
       <div class="col-12">
         <h2 class="header_item">
           {{ weatherForecastItem.city.name | uppercase }}
-          <span class="badge bg-secondary">{{
+          <span class="badge bg-primary">{{
             weatherForecastItem.city.country
           }}</span>
         </h2>
@@ -96,7 +96,7 @@
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 card_container">
-      <div class="col" *ngFor="let singleForecast of weatherForecastItem.list">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let singleForecast of weatherForecastItem.list">
         <div class="card h-100">
           <div class="img_wrapper">
             <img
@@ -113,14 +113,60 @@
             <h5 class="card-title">
               {{ singleForecast.weather[0].description | uppercase }}
             </h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
+            <div class="card-text">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <strong>Temperatura:</strong>
+                  {{ singleForecast.main.temp }} stopni w skali
+                  <span [ngSwitch]="units">
+                    <span *ngSwitchCase="'metric'">Celsiusa</span>
+                    <span *ngSwitchCase="'imperial'">Fahrenheita</span>
+                    <span *ngSwitchCase="'standard'">Kelvina</span>
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  <strong>Temperatura maksymalna:</strong>
+                  {{ singleForecast.main.temp_max }} °
+                  <span [ngSwitch]="units">
+                    <span *ngSwitchCase="'metric'">Celsiusa</span>
+                    <span *ngSwitchCase="'imperial'">Fahrenheita</span>
+                    <span *ngSwitchCase="'standard'">Kelvina</span>
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  <strong>Temperatura minimalna:</strong>
+                  {{ singleForecast.main.temp_min }} °
+                  <span [ngSwitch]="units">
+                    <span *ngSwitchCase="'metric'">Celsiusa</span>
+                    <span *ngSwitchCase="'imperial'">Fahrenheita</span>
+                    <span *ngSwitchCase="'standard'">Kelvina</span>
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  <strong>Ciśnienie:</strong>
+                  {{ singleForecast.main.pressure }} hPa
+                </li>
+                <li class="list-group-item">
+                  <strong>Wilgotność:</strong>
+                  {{ singleForecast.main.humidity }} %
+                </li>
+                <li class="list-group-item">
+                  <strong>Prędkość wiartu:</strong>
+                  {{ singleForecast.wind.speed }} m/s
+                </li>
+                <li class="list-group-item">
+                  <strong>Prędkość podmuchów wiartu:</strong>
+                  {{ singleForecast.wind.gust }} m/s
+                </li>
+                <li class="list-group-item">
+                  <strong>Zachmurzenie:</strong>
+                  {{ singleForecast.clouds.all }} %
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="card-footer">
-            <strong class="text-muted">{{
+            <strong class="forecast_date">{{
               singleForecast.dt_txt | date : "dd.MM.yyyy HH:mm"
             }}</strong>
           </div>

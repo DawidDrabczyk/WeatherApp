@@ -2,3 +2,16 @@
   width: 35px;
   height: 35px;
 }
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-toggle {
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  left: unset;
+}

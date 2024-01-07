@@ -10,31 +10,6 @@
   }
 }
 
-.small_desc {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  padding: 0.5em 0;
-  text-align: center;
-  background-color: darkgray;
-
-  @media (min-width: 992px) {
-    text-align: left;
-  }
-
-  .small_text {
-    margin-bottom: 1em;
-    padding: 1em;
-    font-size: 0.6rem;
-
-    @media (min-width: 992px) {
-      margin-right: 2em;
-      font-size: 1rem;
-    }
-  }
-}
-
 .option {
   padding: 0.5em;
   font-size: 0.7rem;

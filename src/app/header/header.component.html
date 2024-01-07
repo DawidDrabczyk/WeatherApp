@@ -36,14 +36,23 @@
       >
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLinkActive="active" routerLink="/webcamera"
-        >Webcamera TV</a
+      <a
+        id="dropdownMenuButton"
+        type="button"
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLinkActive="active" routerLink="/world-camera"
-        >Earth TV</a
-      >
+        Kamery live
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="nav-link" routerLinkActive="active" routerLink="/webcamera"
+          >Webcamera TV</a
+        >
+        <a class="nav-link" routerLinkActive="active" routerLink="/world-camera"
+          >Earth TV</a
+        >
+      </div>
     </li>
     <li *ngIf="favouriteItems && favouriteItems.length > 0" class="nav-item">
       <a class="nav-link" routerLinkActive="active" routerLink="/favourite"
@@ -52,3 +61,14 @@
     </li>
   </ul>
 </nav>
+
+<!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div> -->

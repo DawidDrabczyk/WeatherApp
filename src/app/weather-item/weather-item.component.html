@@ -103,10 +103,20 @@
         <li class="list-group-item">
           <strong>Temperatura maksymalna:</strong>
           {{ weatherItem.main.temp_max }} °
+          <span [ngSwitch]="units">
+            <span *ngSwitchCase="'metric'">Celsiusa</span>
+            <span *ngSwitchCase="'imperial'">Fahrenheita</span>
+            <span *ngSwitchCase="'standard'">Kelvina</span>
+          </span>
         </li>
         <li class="list-group-item">
           <strong>Temperatura minimalna:</strong>
           {{ weatherItem.main.temp_min }} °
+          <span [ngSwitch]="units">
+            <span *ngSwitchCase="'metric'">Celsiusa</span>
+            <span *ngSwitchCase="'imperial'">Fahrenheita</span>
+            <span *ngSwitchCase="'standard'">Kelvina</span>
+          </span>
         </li>
         <li class="list-group-item">
           <strong>Ciśnienie:</strong> {{ weatherItem.main.pressure }} hPa
