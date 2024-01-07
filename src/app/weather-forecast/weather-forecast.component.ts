@@ -3,6 +3,7 @@ import { WeatherService } from '../weather.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import {
   DatePipe,
+  DecimalPipe,
   NgFor,
   NgIf,
   NgSwitch,
@@ -25,6 +26,7 @@ import { WeatherForecastItemDto } from '../models/weather-forecast-item-dto.mode
     DatePipe,
     NgSwitch,
     NgSwitchCase,
+    DecimalPipe
   ],
   templateUrl: './weather-forecast.component.html',
   styleUrl: './weather-forecast.component.scss',

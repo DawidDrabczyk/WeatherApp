@@ -120,7 +120,7 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                   <strong>Temperatura:</strong>
-                  {{ singleForecast.main.temp }} °
+                  {{ singleForecast.main.temp | number:'1.1-1' }} °
                   <span [ngSwitch]="units">
                     <span *ngSwitchCase="'metric'">C</span>
                     <span *ngSwitchCase="'imperial'">F</span>
@@ -129,7 +129,7 @@
                 </li>
                 <li class="list-group-item">
                   <strong>Temperatura maksymalna:</strong>
-                  {{ singleForecast.main.temp_max }} °
+                  {{ singleForecast.main.temp_max | number:'1.1-1' }} °
                   <span [ngSwitch]="units">
                     <span *ngSwitchCase="'metric'">C</span>
                     <span *ngSwitchCase="'imperial'">F</span>
@@ -138,7 +138,7 @@
                 </li>
                 <li class="list-group-item">
                   <strong>Temperatura minimalna:</strong>
-                  {{ singleForecast.main.temp_min }} °
+                  {{ singleForecast.main.temp_min | number:'1.1-1' }} °
                   <span [ngSwitch]="units">
                     <span *ngSwitchCase="'metric'">C</span>
                     <span *ngSwitchCase="'imperial'">F</span>
@@ -155,11 +155,11 @@
                 </li>
                 <li class="list-group-item">
                   <strong>Prędkość wiartu:</strong>
-                  {{ singleForecast.wind.speed }} m/s
+                  {{ singleForecast.wind.speed | number:'1.0-0' }} m/s
                 </li>
                 <li class="list-group-item">
                   <strong>Prędkość podmuchów wiartu:</strong>
-                  {{ singleForecast.wind.gust }} m/s
+                  {{ singleForecast.wind.gust | number:'1.0-0' }} m/s
                 </li>
                 <li class="list-group-item">
                   <strong>Zachmurzenie:</strong>

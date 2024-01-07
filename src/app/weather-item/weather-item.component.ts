@@ -12,6 +12,7 @@ import { WeatherItemDto } from '../models/weather-item-dto.model';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import {
   DatePipe,
+  DecimalPipe,
   NgIf,
   NgSwitch,
   NgSwitchCase,
@@ -30,6 +31,7 @@ import tippy from 'tippy.js';
     NgSwitch,
     NgSwitchCase,
     DatePipe,
+    DecimalPipe
   ],
   templateUrl: './weather-item.component.html',
   styleUrl: './weather-item.component.scss',

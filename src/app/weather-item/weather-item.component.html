@@ -95,7 +95,7 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <strong>Temperatura:</strong> {{ weatherItem.main.temp }} °
+          <strong>Temperatura:</strong> {{ weatherItem.main.temp | number:'1.1-1' }} °
           <span [ngSwitch]="units">
             <span *ngSwitchCase="'metric'">C</span>
             <span *ngSwitchCase="'imperial'">F</span>
@@ -104,7 +104,7 @@
         </li>
         <li class="list-group-item">
           <strong>Temperatura maksymalna:</strong>
-          {{ weatherItem.main.temp_max }} °
+          {{ weatherItem.main.temp_max | number:'1.1-1' }} °
           <span [ngSwitch]="units">
             <span *ngSwitchCase="'metric'">C</span>
             <span *ngSwitchCase="'imperial'">F</span>
@@ -113,7 +113,7 @@
         </li>
         <li class="list-group-item">
           <strong>Temperatura minimalna:</strong>
-          {{ weatherItem.main.temp_min }} °
+          {{ weatherItem.main.temp_min | number:'1.1-1' }} °
           <span [ngSwitch]="units">
             <span *ngSwitchCase="'metric'">C</span>
             <span *ngSwitchCase="'imperial'">F</span>
@@ -127,11 +127,11 @@
           <strong>Wilgotność:</strong> {{ weatherItem.main.humidity }} %
         </li>
         <li class="list-group-item">
-          <strong>Prędkość wiartu:</strong> {{ weatherItem.wind.speed }} m/s
+          <strong>Prędkość wiartu:</strong> {{ weatherItem.wind.speed | number:'1.0-0' }} m/s
         </li>
         <li class="list-group-item">
           <strong>Prędkość podmuchów wiartu:</strong>
-          {{ weatherItem.wind.gust }} m/s
+          {{ weatherItem.wind.gust | number:'1.0-0' }} m/s
         </li>
         <li class="list-group-item">
           <strong>Zachmurzenie:</strong>
