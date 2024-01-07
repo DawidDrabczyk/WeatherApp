@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { catchError, finalize, throwError } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +17,7 @@ import {
   NgSwitchCase,
   UpperCasePipe,
 } from '@angular/common';
+import tippy from 'tippy.js';
 
 @Component({
   selector: 'app-weather-item',
@@ -27,7 +34,7 @@ import {
   templateUrl: './weather-item.component.html',
   styleUrl: './weather-item.component.scss',
 })
-export class WeatherItemComponent implements OnInit {
+export class WeatherItemComponent implements OnInit, DoCheck {
   public isSpinner: boolean = false;
   public isFavourite: boolean = false;
 
@@ -47,6 +54,12 @@ export class WeatherItemComponent implements OnInit {
     setTimeout(() => {
       this.setInputFocus();
     }, 200);
+  }
+
+  ngDoCheck(): void {
+    tippy('#favIcon', {
+      content: 'Dodano do ulubionych',
+    });
   }
 
   public getWeatherByCityName(city: any, units: any): void {

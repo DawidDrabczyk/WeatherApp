@@ -1,7 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
-import { DatePipe, NgFor, NgIf, NgSwitch, NgSwitchCase, UpperCasePipe } from '@angular/common';
+import {
+  DatePipe,
+  NgFor,
+  NgIf,
+  NgSwitch,
+  NgSwitchCase,
+  UpperCasePipe,
+} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { finalize, catchError, throwError } from 'rxjs';
 import { WeatherForecastItemDto } from '../models/weather-forecast-item-dto.model';
@@ -17,7 +24,7 @@ import { WeatherForecastItemDto } from '../models/weather-forecast-item-dto.mode
     UpperCasePipe,
     DatePipe,
     NgSwitch,
-    NgSwitchCase
+    NgSwitchCase,
   ],
   templateUrl: './weather-forecast.component.html',
   styleUrl: './weather-forecast.component.scss',
@@ -64,7 +71,6 @@ export class WeatherForecastComponent implements OnInit {
       )
       .subscribe((res) => {
         this.weatherForecastItem = res;
-        console.log(this.weatherForecastItem);
         this.errorMessage = null;
       });
   }

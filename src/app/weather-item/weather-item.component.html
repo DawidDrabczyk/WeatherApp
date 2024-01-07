@@ -79,7 +79,10 @@
       <div class="card-body">
         <h5 class="card-title header_item">
           {{ weatherItem.name | uppercase }}
-          <span *ngIf="weatherItem.isFavourite" class="favourite_icon"
+          <span
+            *ngIf="weatherItem.isFavourite"
+            class="favourite_icon"
+            id="favIcon"
             ><em class="fa-solid fa-star"></em
           ></span>
         </h5>

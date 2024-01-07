@@ -1,9 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { WeatherItemDto } from '../models/weather-item-dto.model';
 import { WeatherService } from '../weather.service';
 import { NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
+import tippy from 'tippy.js';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   public favouriteItems: Array<WeatherItemDto> = [];
   private subscription?: Subscription;
 
@@ -24,6 +26,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
+  }
+
+  ngAfterViewInit() {
+    tippy('#logoBtn', {
+      content: 'Przejdź do strony głównej',
+    });
   }
 
   private getFavouriteList(): void {

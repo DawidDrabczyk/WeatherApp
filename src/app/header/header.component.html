@@ -1,6 +1,6 @@
-<nav class="navbar">
+<nav class="navbar d-none d-lg-block">
   <ul class="nav nav-tabs">
-    <a class="navbar-brand" routerLink="/">
+    <a class="navbar-brand" routerLink="/" id="logoBtn">
       <img
         class="logo"
         src="../../assets/img/logo.jpg"
@@ -62,13 +62,73 @@
   </ul>
 </nav>
 
-<!-- <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
+  <a class="navbar-brand" routerLink="/">
+    <img class="logo" src="../../assets/img/logo.jpg" alt="weather app logo" />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div> -->
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/"
+          >Strona główna</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/list"
+          >Lista stacji IMGW</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/weather-data"
+          >Aktualne dane pogodowe</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/weather-forecast"
+          >Prognoza pogody</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          id="dropdownMenuButton"
+          type="button"
+          class="nav-link dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Kamery live
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="nav-link" routerLinkActive="active" routerLink="/webcamera"
+            >Webcamera TV</a
+          >
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/world-camera"
+            >Earth TV</a
+          >
+        </div>
+      </li>
+      <li *ngIf="favouriteItems && favouriteItems.length > 0" class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/favourite"
+          >Ulubione</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
