@@ -53,10 +53,14 @@
   margin-bottom: 4em;
 
   .img_wrapper {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
 
     .card-img-top {
       width: 150px;
+      padding: 1em;
     }
   }
 }

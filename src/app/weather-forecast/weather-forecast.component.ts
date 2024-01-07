@@ -101,6 +101,42 @@ export class WeatherForecastComponent implements OnInit, OnDestroy {
     this.weatherForecastItem = null;
   }
 
+  public setWeatherIcon(weatherDesc: string): string {
+    switch (weatherDesc) {
+      case 'Rain':
+        return '../../assets/img/weather-icons/rain.png';
+        break;
+      case 'Snow':
+        return '../../assets/img/weather-icons/snow.jpg';
+        break;
+      case 'Thunderstorm':
+        return '../../assets/img/weather-icons/thunderstorm.png';
+        break;
+      case 'Clear':
+        return '../../assets/img/weather-icons/sun.png';
+        break;
+      case 'Clouds':
+        return '../../assets/img/weather-icons/cloud.png';
+        break;
+      case 'Drizzle':
+        return '../../assets/img/weather-icons/drizzle.png';
+        break;
+      case 'Mist':
+      case 'Smoke':
+      case 'Haze':
+      case 'Dust':
+      case 'Sand':
+      case 'Ash':
+      case 'Squall':
+      case 'Tornado':
+      case 'Fog':
+        return '../../assets/img/weather-icons/fog.png';
+        break;
+      default:
+        return '../../assets/img/weather-icons/unknown.png';
+    }
+  }
+
   private setInputFocus(): void {
     this.inputData.nativeElement.focus();
   }

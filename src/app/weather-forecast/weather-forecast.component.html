@@ -103,11 +103,7 @@
         <div class="card h-100">
           <div class="img_wrapper">
             <img
-              [src]="
-                'https://openweathermap.org/img/wn/' +
-                singleForecast.weather[0].icon +
-                '@2x.png'
-              "
+              [src]="setWeatherIcon(singleForecast.weather[0].main)"
               class="card-img-top"
               [alt]="singleForecast.weather[0].description"
             />

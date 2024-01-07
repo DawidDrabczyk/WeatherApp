@@ -79,6 +79,9 @@
       <div class="card-body">
         <h5 class="card-title header_item">
           {{ weatherItem.name | uppercase }}
+          <small class="small_desc"
+            >({{ weatherItem.weather[0].description }})</small
+          >
           <span
             *ngIf="weatherItem.isFavourite"
             class="favourite_icon"
@@ -95,7 +98,8 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <strong>Temperatura:</strong> {{ weatherItem.main.temp | number:'1.1-1' }} °
+          <strong>Temperatura:</strong>
+          {{ weatherItem.main.temp | number : "1.1-1" }} °
           <span [ngSwitch]="units">
             <span *ngSwitchCase="'metric'">C</span>
             <span *ngSwitchCase="'imperial'">F</span>
@@ -104,7 +108,7 @@
         </li>
         <li class="list-group-item">
           <strong>Temp. maksymalna:</strong>
-          {{ weatherItem.main.temp_max | number:'1.1-1' }} °
+          {{ weatherItem.main.temp_max | number : "1.1-1" }} °
           <span [ngSwitch]="units">
             <span *ngSwitchCase="'metric'">C</span>
             <span *ngSwitchCase="'imperial'">F</span>
@@ -113,7 +117,7 @@
         </li>
         <li class="list-group-item">
           <strong>Temp. minimalna:</strong>
-          {{ weatherItem.main.temp_min | number:'1.1-1' }} °
+          {{ weatherItem.main.temp_min | number : "1.1-1" }} °
           <span [ngSwitch]="units">
             <span *ngSwitchCase="'metric'">C</span>
             <span *ngSwitchCase="'imperial'">F</span>
@@ -127,11 +131,12 @@
           <strong>Wilgotność:</strong> {{ weatherItem.main.humidity }} %
         </li>
         <li class="list-group-item">
-          <strong>Prędkość wiartu:</strong> {{ weatherItem.wind.speed | number:'1.0-0' }} m/s
+          <strong>Prędkość wiartu:</strong>
+          {{ weatherItem.wind.speed | number : "1.0-0" }} m/s
         </li>
         <li class="list-group-item">
           <strong>Prędkość podmuchów wiartu:</strong>
-          {{ weatherItem.wind.gust | number:'1.0-0' }} m/s
+          {{ weatherItem.wind.gust | number : "1.0-0" }} m/s
         </li>
         <li class="list-group-item">
           <strong>Zachmurzenie:</strong>
@@ -154,9 +159,7 @@
           (click)="addToFavourite(weatherItem)"
           >Dodaj do ulubionych</a
         >
-        <a
-          class="card-link"
-          (click)="checkWeatherForecast(weatherItem)"
+        <a class="card-link" (click)="checkWeatherForecast(weatherItem)"
           >Sprawdź prognozę pogody</a
         >
         <a

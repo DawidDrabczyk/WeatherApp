@@ -86,7 +86,9 @@ export class WeatherItemComponent implements OnInit, DoCheck {
       .subscribe((res) => {
         this.weatherItem = res;
         this.markAsFavourite();
-        this.weatherIcon = `https://openweathermap.org/img/wn/${this.weatherItem.weather[0].icon}@2x.png`;
+        this.weatherIcon = this.setWeatherIcon(
+          this.weatherItem.weather[0].main
+        );
         this.errorMessage = null;
         setTimeout(() => {
           window.scrollTo(0, document.body.scrollHeight);
@@ -150,6 +152,42 @@ export class WeatherItemComponent implements OnInit, DoCheck {
       )
     ) {
       this.weatherItem.isFavourite = true;
+    }
+  }
+
+  private setWeatherIcon(weatherDesc: string): string {
+    switch (weatherDesc) {
+      case 'Rain':
+        return '../../assets/img/weather-icons/rain.png';
+        break;
+      case 'Snow':
+        return '../../assets/img/weather-icons/snow.jpg';
+        break;
+      case 'Thunderstorm':
+        return '../../assets/img/weather-icons/thunderstorm.png';
+        break;
+      case 'Clear':
+        return '../../assets/img/weather-icons/sun.png';
+        break;
+      case 'Clouds':
+        return '../../assets/img/weather-icons/cloud.png';
+        break;
+      case 'Drizzle':
+        return '../../assets/img/weather-icons/drizzle.png';
+        break;
+      case 'Mist':
+      case 'Smoke':
+      case 'Haze':
+      case 'Dust':
+      case 'Sand':
+      case 'Ash':
+      case 'Squall':
+      case 'Tornado':
+      case 'Fog':
+        return '../../assets/img/weather-icons/fog.png';
+        break;
+      default:
+        return '../../assets/img/weather-icons/unknown.png';
     }
   }
 }
