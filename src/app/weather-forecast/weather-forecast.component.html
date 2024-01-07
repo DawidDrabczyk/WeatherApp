@@ -96,7 +96,10 @@
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 card_container">
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let singleForecast of weatherForecastItem.list">
+      <div
+        class="col-12 col-md-6 col-lg-4 col-xl-3"
+        *ngFor="let singleForecast of weatherForecastItem.list"
+      >
         <div class="card h-100">
           <div class="img_wrapper">
             <img
@@ -117,29 +120,29 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                   <strong>Temperatura:</strong>
-                  {{ singleForecast.main.temp }} stopni w skali
+                  {{ singleForecast.main.temp }} °
                   <span [ngSwitch]="units">
-                    <span *ngSwitchCase="'metric'">Celsiusa</span>
-                    <span *ngSwitchCase="'imperial'">Fahrenheita</span>
-                    <span *ngSwitchCase="'standard'">Kelvina</span>
+                    <span *ngSwitchCase="'metric'">C</span>
+                    <span *ngSwitchCase="'imperial'">F</span>
+                    <span *ngSwitchCase="'standard'">K</span>
                   </span>
                 </li>
                 <li class="list-group-item">
                   <strong>Temperatura maksymalna:</strong>
                   {{ singleForecast.main.temp_max }} °
                   <span [ngSwitch]="units">
-                    <span *ngSwitchCase="'metric'">Celsiusa</span>
-                    <span *ngSwitchCase="'imperial'">Fahrenheita</span>
-                    <span *ngSwitchCase="'standard'">Kelvina</span>
+                    <span *ngSwitchCase="'metric'">C</span>
+                    <span *ngSwitchCase="'imperial'">F</span>
+                    <span *ngSwitchCase="'standard'">K</span>
                   </span>
                 </li>
                 <li class="list-group-item">
                   <strong>Temperatura minimalna:</strong>
                   {{ singleForecast.main.temp_min }} °
                   <span [ngSwitch]="units">
-                    <span *ngSwitchCase="'metric'">Celsiusa</span>
-                    <span *ngSwitchCase="'imperial'">Fahrenheita</span>
-                    <span *ngSwitchCase="'standard'">Kelvina</span>
+                    <span *ngSwitchCase="'metric'">C</span>
+                    <span *ngSwitchCase="'imperial'">F</span>
+                    <span *ngSwitchCase="'standard'">K</span>
                   </span>
                 </li>
                 <li class="list-group-item">

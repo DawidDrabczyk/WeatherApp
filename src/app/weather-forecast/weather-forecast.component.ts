@@ -40,6 +40,8 @@ export class WeatherForecastComponent implements OnInit {
   public weatherIcon?: string;
   public units?: string;
 
+  public averageTemp?: number;
+
   @ViewChild('input_data') inputData!: ElementRef;
 
   constructor(private weatherService: WeatherService) {}

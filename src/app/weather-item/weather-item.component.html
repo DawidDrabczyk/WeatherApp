@@ -95,30 +95,29 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <strong>Temperatura:</strong> {{ weatherItem.main.temp }} stopni w
-          skali
+          <strong>Temperatura:</strong> {{ weatherItem.main.temp }} °
           <span [ngSwitch]="units">
-            <span *ngSwitchCase="'metric'">Celsiusa</span>
-            <span *ngSwitchCase="'imperial'">Fahrenheita</span>
-            <span *ngSwitchCase="'standard'">Kelvina</span>
+            <span *ngSwitchCase="'metric'">C</span>
+            <span *ngSwitchCase="'imperial'">F</span>
+            <span *ngSwitchCase="'standard'">K</span>
           </span>
         </li>
         <li class="list-group-item">
           <strong>Temperatura maksymalna:</strong>
           {{ weatherItem.main.temp_max }} °
           <span [ngSwitch]="units">
-            <span *ngSwitchCase="'metric'">Celsiusa</span>
-            <span *ngSwitchCase="'imperial'">Fahrenheita</span>
-            <span *ngSwitchCase="'standard'">Kelvina</span>
+            <span *ngSwitchCase="'metric'">C</span>
+            <span *ngSwitchCase="'imperial'">F</span>
+            <span *ngSwitchCase="'standard'">K</span>
           </span>
         </li>
         <li class="list-group-item">
           <strong>Temperatura minimalna:</strong>
           {{ weatherItem.main.temp_min }} °
           <span [ngSwitch]="units">
-            <span *ngSwitchCase="'metric'">Celsiusa</span>
-            <span *ngSwitchCase="'imperial'">Fahrenheita</span>
-            <span *ngSwitchCase="'standard'">Kelvina</span>
+            <span *ngSwitchCase="'metric'">C</span>
+            <span *ngSwitchCase="'imperial'">F</span>
+            <span *ngSwitchCase="'standard'">K</span>
           </span>
         </li>
         <li class="list-group-item">
