@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import {
@@ -26,12 +32,12 @@ import { WeatherForecastItemDto } from '../models/weather-forecast-item-dto.mode
     DatePipe,
     NgSwitch,
     NgSwitchCase,
-    DecimalPipe
+    DecimalPipe,
   ],
   templateUrl: './weather-forecast.component.html',
   styleUrl: './weather-forecast.component.scss',
 })
-export class WeatherForecastComponent implements OnInit {
+export class WeatherForecastComponent implements OnInit, OnDestroy {
   public isSpinner: boolean = false;
   public isFavourite: boolean = false;
 
@@ -53,6 +59,17 @@ export class WeatherForecastComponent implements OnInit {
     setTimeout(() => {
       this.setInputFocus();
     }, 200);
+
+    let cityForWeatherItem = localStorage.getItem('city');
+
+    if (cityForWeatherItem) {
+      this.cityName = cityForWeatherItem;
+      this.getWeatherForecastByCityName(this.cityName, this.units);
+    }
+  }
+
+  ngOnDestroy(): void {
+    localStorage.clear();
   }
 
   public getWeatherForecastByCityName(city: any, units: any): void {

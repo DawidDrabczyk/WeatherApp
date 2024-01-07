@@ -103,7 +103,7 @@
           </span>
         </li>
         <li class="list-group-item">
-          <strong>Temperatura maksymalna:</strong>
+          <strong>Temp. maksymalna:</strong>
           {{ weatherItem.main.temp_max | number:'1.1-1' }} °
           <span [ngSwitch]="units">
             <span *ngSwitchCase="'metric'">C</span>
@@ -112,7 +112,7 @@
           </span>
         </li>
         <li class="list-group-item">
-          <strong>Temperatura minimalna:</strong>
+          <strong>Temp. minimalna:</strong>
           {{ weatherItem.main.temp_min | number:'1.1-1' }} °
           <span [ngSwitch]="units">
             <span *ngSwitchCase="'metric'">C</span>
@@ -153,6 +153,11 @@
           class="card-link"
           (click)="addToFavourite(weatherItem)"
           >Dodaj do ulubionych</a
+        >
+        <a
+          class="card-link"
+          (click)="checkWeatherForecast(weatherItem)"
+          >Sprawdź prognozę pogody</a
         >
         <a
           *ngIf="weatherItem.isFavourite"

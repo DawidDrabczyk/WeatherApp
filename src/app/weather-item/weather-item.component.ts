@@ -19,6 +19,7 @@ import {
   UpperCasePipe,
 } from '@angular/common';
 import tippy from 'tippy.js';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-weather-item',
@@ -31,7 +32,7 @@ import tippy from 'tippy.js';
     NgSwitch,
     NgSwitchCase,
     DatePipe,
-    DecimalPipe
+    DecimalPipe,
   ],
   templateUrl: './weather-item.component.html',
   styleUrl: './weather-item.component.scss',
@@ -49,7 +50,7 @@ export class WeatherItemComponent implements OnInit, DoCheck {
 
   @ViewChild('input_data') inputData!: ElementRef;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService, private router: Router) {}
 
   ngOnInit(): void {
     this.units = 'metric';
@@ -125,6 +126,12 @@ export class WeatherItemComponent implements OnInit, DoCheck {
         this.weatherService.favouriteItems
       );
     }
+  }
+
+  public checkWeatherForecast(weatherItem: WeatherItemDto): void {
+    localStorage.setItem('city', weatherItem.name);
+
+    this.router.navigate(['/weather-forecast']);
   }
 
   private setInputFocus(): void {
