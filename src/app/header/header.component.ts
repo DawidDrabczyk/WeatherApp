@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { WeatherItemDto } from '../models/weather-item-dto.model';
 import { WeatherService } from '../weather.service';
@@ -18,6 +25,8 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   public favouriteItems: Array<WeatherItemDto> = [];
   private subscription?: Subscription;
 
+  @ViewChild('navbarNav', { static: false }) navbarNav?: ElementRef;
+
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
@@ -32,6 +41,12 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
     tippy('#logoBtn', {
       content: 'Przejdź do strony głównej',
     });
+  }
+
+  public closeNavigation() {
+    if (this.navbarNav) {
+      this.navbarNav.nativeElement.classList.remove('show');
+    }
   }
 
   private getFavouriteList(): void {

@@ -77,20 +77,32 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse" id="navbarNav" #navbarNav>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/"
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/"
+          (click)="closeNavigation()"
           >Strona główna</a
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/list"
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/list"
+          (click)="closeNavigation()"
           >Lista stacji IMGW</a
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/weather-data"
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/weather-data"
+          (click)="closeNavigation()"
           >Aktualne dane pogodowe</a
         >
       </li>
@@ -99,6 +111,7 @@
           class="nav-link"
           routerLinkActive="active"
           routerLink="/weather-forecast"
+          (click)="closeNavigation()"
           >Prognoza pogody</a
         >
       </li>
@@ -113,19 +126,28 @@
           Kamery live
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="nav-link" routerLinkActive="active" routerLink="/webcamera"
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/webcamera"
+            (click)="closeNavigation()"
             >Webcamera TV</a
           >
           <a
             class="nav-link"
             routerLinkActive="active"
             routerLink="/world-camera"
+            (click)="closeNavigation()"
             >Earth TV</a
           >
         </div>
       </li>
       <li *ngIf="favouriteItems && favouriteItems.length > 0" class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/favourite"
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/favourite"
+          (click)="closeNavigation()"
           >Ulubione</a
         >
       </li>
