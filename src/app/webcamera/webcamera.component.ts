@@ -9,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class WebcameraComponent {
 
+  handleError(){
+    console.log('error');
+  }
 }
