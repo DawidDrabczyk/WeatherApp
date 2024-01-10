@@ -50,13 +50,6 @@
           airPollutionData &&
           airPollutionData.pm2_5 > 50 &&
           airPollutionData.pm2_5 <= 75,
-        'text-dark':
-          (airPollutionData &&
-            airPollutionData.pm2_5 > 50 &&
-            airPollutionData.pm2_5 <= 75) ||
-          (airPollutionData &&
-            airPollutionData.pm2_5 > 10 &&
-            airPollutionData.pm2_5 <= 25),
         'bg-primary':
           airPollutionData &&
           airPollutionData.pm2_5 > 25 &&
@@ -65,7 +58,19 @@
           airPollutionData &&
           airPollutionData.pm2_5 > 10 &&
           airPollutionData.pm2_5 <= 25,
-        'bg-success': airPollutionData && airPollutionData.pm2_5 <= 10
+        'bg-success': airPollutionData && airPollutionData.pm2_5 <= 10,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.pm2_5 > 50 &&
+            airPollutionData.pm2_5 <= 75) ||
+          (airPollutionData &&
+            airPollutionData.pm2_5 > 10 &&
+            airPollutionData.pm2_5 <= 25),
+        'text-white':
+          (airPollutionData && airPollutionData.pm2_5 > 75) ||
+          (airPollutionData &&
+          airPollutionData.pm2_5 > 25 &&
+          airPollutionData.pm2_5 <= 50) || (airPollutionData && airPollutionData.pm2_5 <= 10),
       }"
     >
       <div class="card-header">Pył zawieszony PM2.5</div>
@@ -82,13 +87,6 @@
           airPollutionData &&
           airPollutionData.pm10 > 100 &&
           airPollutionData.pm10 <= 200,
-        'text-dark':
-          (airPollutionData &&
-            airPollutionData.pm10 > 100 &&
-            airPollutionData.pm10 <= 200) ||
-          (airPollutionData &&
-            airPollutionData.pm10 > 20 &&
-            airPollutionData.pm10 <= 50),
         'bg-primary':
           airPollutionData &&
           airPollutionData.pm10 > 50 &&
@@ -97,7 +95,17 @@
           airPollutionData &&
           airPollutionData.pm10 > 20 &&
           airPollutionData.pm10 <= 50,
-        'bg-success': airPollutionData && airPollutionData.pm10 <= 20
+        'bg-success': airPollutionData && airPollutionData.pm10 <= 20,
+        'text-dark':
+          (airPollutionData && airPollutionData.pm10 > 200) ||
+          (airPollutionData &&
+            airPollutionData.pm10 > 20 &&
+            airPollutionData.pm10 <= 50),
+        'text-white':
+          (airPollutionData && airPollutionData.pm10 > 200) ||
+          (airPollutionData &&
+          airPollutionData.pm10 > 50 &&
+          airPollutionData.pm10 <= 100) || (airPollutionData && airPollutionData.pm10 <= 20),
       }"
     >
       <div class="card-header">Pył zawieszony PM10</div>
@@ -114,13 +122,6 @@
           airPollutionData &&
           airPollutionData.so2 > 250 &&
           airPollutionData.so2 <= 350,
-        'text-dark':
-          (airPollutionData &&
-            airPollutionData.so2 > 250 &&
-            airPollutionData.so2 <= 350) ||
-          (airPollutionData &&
-            airPollutionData.so2 > 20 &&
-            airPollutionData.so2 <= 80),
         'bg-primary':
           airPollutionData &&
           airPollutionData.so2 > 80 &&
@@ -129,7 +130,19 @@
           airPollutionData &&
           airPollutionData.so2 > 20 &&
           airPollutionData.so2 <= 80,
-        'bg-success': airPollutionData && airPollutionData.so2 <= 20
+        'bg-success': airPollutionData && airPollutionData.so2 <= 20,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.so2 > 250 &&
+            airPollutionData.so2 <= 350) ||
+          (airPollutionData &&
+            airPollutionData.so2 > 20 &&
+            airPollutionData.so2 <= 80),
+        'text-white':
+          (airPollutionData && airPollutionData.so2 > 350) ||
+          (airPollutionData &&
+          airPollutionData.so2 > 80 &&
+          airPollutionData.so2 <= 250) || (airPollutionData && airPollutionData.so2 <= 20),
       }"
     >
       <div class="card-header">Dwutlenek siarki</div>
@@ -146,13 +159,6 @@
           airPollutionData &&
           airPollutionData.no2 > 150 &&
           airPollutionData.no2 <= 200,
-        'text-dark':
-          (airPollutionData &&
-            airPollutionData.no2 > 150 &&
-            airPollutionData.no2 <= 200) ||
-          (airPollutionData &&
-            airPollutionData.no2 > 40 &&
-            airPollutionData.no2 <= 70),
         'bg-primary':
           airPollutionData &&
           airPollutionData.no2 > 70 &&
@@ -161,7 +167,19 @@
           airPollutionData &&
           airPollutionData.no2 > 40 &&
           airPollutionData.no2 <= 70,
-        'bg-success': airPollutionData && airPollutionData.no2 <= 40
+        'bg-success': airPollutionData && airPollutionData.no2 <= 40,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.no2 > 150 &&
+            airPollutionData.no2 <= 200) ||
+          (airPollutionData &&
+            airPollutionData.no2 > 40 &&
+            airPollutionData.no2 <= 70),
+        'text-white':
+          (airPollutionData && airPollutionData.no2 > 200) ||
+          (airPollutionData &&
+          airPollutionData.no2 > 70 &&
+          airPollutionData.no2 <= 150) || (airPollutionData && airPollutionData.no2 <= 40),
       }"
     >
       <div class="card-header">Dwutlenek azotu</div>
@@ -178,13 +196,6 @@
           airPollutionData &&
           airPollutionData.o3 > 140 &&
           airPollutionData.o3 <= 180,
-        'text-dark':
-          (airPollutionData &&
-            airPollutionData.o3 > 140 &&
-            airPollutionData.o3 <= 180) ||
-          (airPollutionData &&
-            airPollutionData.o3 > 60 &&
-            airPollutionData.o3 <= 100),
         'bg-primary':
           airPollutionData &&
           airPollutionData.o3 > 100 &&
@@ -193,7 +204,19 @@
           airPollutionData &&
           airPollutionData.o3 > 60 &&
           airPollutionData.o3 <= 100,
-        'bg-success': airPollutionData && airPollutionData.o3 <= 60
+        'bg-success': airPollutionData && airPollutionData.o3 <= 60,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.o3 > 140 &&
+            airPollutionData.o3 <= 180) ||
+          (airPollutionData &&
+            airPollutionData.o3 > 60 &&
+            airPollutionData.o3 <= 100),
+        'text-white':
+          (airPollutionData && airPollutionData.o3 > 180) ||
+          (airPollutionData &&
+          airPollutionData.o3 > 100 &&
+          airPollutionData.o3 <= 140) || (airPollutionData && airPollutionData.o3 <= 60),
       }"
     >
       <div class="card-header">Ozon</div>
@@ -210,13 +233,6 @@
           airPollutionData &&
           airPollutionData.co > 12400 &&
           airPollutionData.co <= 15400,
-        'text-dark':
-          (airPollutionData &&
-            airPollutionData.co > 12400 &&
-            airPollutionData.co <= 15400) ||
-          (airPollutionData &&
-            airPollutionData.co > 4400 &&
-            airPollutionData.co <= 9400),
         'bg-primary':
           airPollutionData &&
           airPollutionData.co > 9400 &&
@@ -225,7 +241,19 @@
           airPollutionData &&
           airPollutionData.co > 4400 &&
           airPollutionData.co <= 9400,
-        'bg-success': airPollutionData && airPollutionData.co <= 4400
+        'bg-success': airPollutionData && airPollutionData.co <= 4400,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.co > 12400 &&
+            airPollutionData.co <= 15400) ||
+          (airPollutionData &&
+            airPollutionData.co > 4400 &&
+            airPollutionData.co <= 9400),
+        'text-white':
+          (airPollutionData && airPollutionData.co > 15400) ||
+          (airPollutionData &&
+          airPollutionData.co > 9400 &&
+          airPollutionData.co <= 12400) || (airPollutionData && airPollutionData.co <= 4400),
       }"
     >
       <div class="card-header">Tlenek węgla</div>
