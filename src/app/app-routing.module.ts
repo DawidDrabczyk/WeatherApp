@@ -29,6 +29,13 @@ const routes: Route[] = [
       ),
   },
   {
+    path: 'air-pollution',
+    loadComponent: () =>
+      import('./air-pollution/air-pollution.component').then(
+        (mod) => mod.AirPollutionComponent
+      ),
+  },
+  {
     path: 'webcamera',
     loadComponent: () =>
       import('./webcamera/webcamera.component').then(

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 header">
+      <h4>
+        Aby sprawdzić jakość powietrza w określonym miejscu na świecie wpisz
+        nazwę miasta i wciśnij enter
+      </h4>
+    </div>
+    <div class="col-12">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Wpisz miejscowość</span
+        >
+        <input
+          #input_data
+          type="text"
+          class="form-control"
+          [(ngModel)]="cityName"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          (keyup.enter)="getAirPollutionByCityName(cityName)"
+        />
+      </div>
+    </div>
+  </div>
+</div>

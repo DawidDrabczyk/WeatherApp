@@ -12,7 +12,7 @@ export class WeatherService {
   private url: string = 'https://danepubliczne.imgw.pl/api/data';
 
   private apiKey: string = '1b99f2272edc02a59db20170fb27bc32';
-  private ulrCurrentWeather: string = 'https://api.openweathermap.org/data/2.5';
+  private ulrCurrentWeather: string = 'https://api.openweathermap.org';
 
   public favouritePlacesArray = new ReplaySubject<Array<WeatherItemDto>>(1);
   public favouriteItems: Array<WeatherItemDto> = [];
@@ -37,9 +37,12 @@ export class WeatherService {
       .set('lang', 'pl')
       .set('units', tempUnit);
 
-    return this.http.get<WeatherItemDto>(`${this.ulrCurrentWeather}/weather`, {
-      params: params,
-    });
+    return this.http.get<WeatherItemDto>(
+      `${this.ulrCurrentWeather}/data/2.5/weather`,
+      {
+        params: params,
+      }
+    );
   }
 
   public getWeatherForecastByCityName(
@@ -52,7 +55,32 @@ export class WeatherService {
       .set('lang', 'pl')
       .set('units', tempUnit);
 
-    return this.http.get<WeatherForecastItemDto>(`${this.ulrCurrentWeather}/forecast`, {
+    return this.http.get<WeatherForecastItemDto>(
+      `${this.ulrCurrentWeather}/data/2.5/forecast`,
+      {
+        params: params,
+      }
+    );
+  }
+
+  public getCityByCoordinate(city: string, limit: number): Observable<any> {
+    let params = new HttpParams()
+      .set('q', city)
+      .set('appid', this.apiKey)
+      .set('limit', limit.toString());
+
+    return this.http.get<any>(`${this.ulrCurrentWeather}/geo/1.0/direct`, {
+      params: params,
+    });
+  }
+
+  public getAirPollution(lat: number, lon: number): Observable<any> {
+    let params = new HttpParams()
+      .set('lat', lat.toString())
+      .set('lon', lon.toString())
+      .set('appid', this.apiKey);
+
+    return this.http.get<any>(`${this.ulrCurrentWeather}/data/2.5/air_pollution`, {
       params: params,
     });
   }
