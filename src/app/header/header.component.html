@@ -36,10 +36,7 @@
       >
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLinkActive="active"
-        routerLink="/air-pollution"
+      <a class="nav-link" routerLinkActive="active" routerLink="/air-pollution"
         >Jakość powietrza</a
       >
     </li>
@@ -121,6 +118,15 @@
           routerLink="/weather-forecast"
           (click)="closeNavigation()"
           >Prognoza pogody</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/air-pollution"
+          (click)="closeNavigation()"
+          >Jakość powietrza</a
         >
       </li>
       <li class="nav-item">

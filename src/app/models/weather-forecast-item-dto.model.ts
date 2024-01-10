@@ -1,3 +1,5 @@
+import { Coord } from "./coord.model";
+
 export interface WeatherForecastItemDto {
   city: City;
   cnt: number;
@@ -14,11 +16,6 @@ interface City {
   sunrise: number;
   sunset: number;
   timezone: number;
-}
-
-interface Coord {
-  lat: number;
-  lon: number;
 }
 
 interface WeatherForecast {

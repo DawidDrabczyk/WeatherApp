@@ -1,0 +1,35 @@
+@import url("../../assets/styles/_section.scss");
+
+.main_container {
+  margin: 1em 0;
+  .desc {
+    margin-bottom: 1em;
+  }
+}
+
+.card_container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 5em;
+
+  .card {
+    margin: 0 1em;
+  }
+}
+
+.bg-danger {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

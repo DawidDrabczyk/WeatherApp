@@ -18,8 +18,219 @@
           [(ngModel)]="cityName"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default"
-          (keyup.enter)="getAirPollutionByCityName(cityName)"
+          (keyup.enter)="cityName && getCityByCoordinate(cityName)"
         />
+      </div>
+    </div>
+    <div *ngIf="isSpinner" class="col-12 spinner_container">
+      <app-spinner></app-spinner>
+    </div>
+
+    <div *ngIf="errorMessage" class="error_form">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <div *ngIf="cityItem" class="row main_container">
+    <div class="col-12 center">
+      <h3>{{ cityItem.name | uppercase }}</h3>
+    </div>
+    <div class="col-12 center desc">
+      Szczegółowe statystyki jakości powietrza
+    </div>
+  </div>
+
+  <div *ngIf="cityItem" class="row card_container">
+    <div
+      class="col-6 card mb-3"
+      style="max-width: 18rem"
+      [ngClass]="{
+        'bg-danger': airPollutionData && airPollutionData.pm2_5 > 75,
+        'bg-warning':
+          airPollutionData &&
+          airPollutionData.pm2_5 > 50 &&
+          airPollutionData.pm2_5 <= 75,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.pm2_5 > 50 &&
+            airPollutionData.pm2_5 <= 75) ||
+          (airPollutionData &&
+            airPollutionData.pm2_5 > 10 &&
+            airPollutionData.pm2_5 <= 25),
+        'bg-primary':
+          airPollutionData &&
+          airPollutionData.pm2_5 > 25 &&
+          airPollutionData.pm2_5 <= 50,
+        'bg-light':
+          airPollutionData &&
+          airPollutionData.pm2_5 > 10 &&
+          airPollutionData.pm2_5 <= 25,
+        'bg-success': airPollutionData && airPollutionData.pm2_5 <= 10
+      }"
+    >
+      <div class="card-header">Pył zawieszony PM2.5</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ airPollutionData?.pm2_5 }}</h5>
+      </div>
+    </div>
+    <div
+      class="col-6 card mb-3"
+      style="max-width: 18rem"
+      [ngClass]="{
+        'bg-danger': airPollutionData && airPollutionData.pm10 > 200,
+        'bg-warning':
+          airPollutionData &&
+          airPollutionData.pm10 > 100 &&
+          airPollutionData.pm10 <= 200,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.pm10 > 100 &&
+            airPollutionData.pm10 <= 200) ||
+          (airPollutionData &&
+            airPollutionData.pm10 > 20 &&
+            airPollutionData.pm10 <= 50),
+        'bg-primary':
+          airPollutionData &&
+          airPollutionData.pm10 > 50 &&
+          airPollutionData.pm10 <= 100,
+        'bg-light':
+          airPollutionData &&
+          airPollutionData.pm10 > 20 &&
+          airPollutionData.pm10 <= 50,
+        'bg-success': airPollutionData && airPollutionData.pm10 <= 20
+      }"
+    >
+      <div class="card-header">Pył zawieszony PM10</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ airPollutionData?.pm10 }}</h5>
+      </div>
+    </div>
+    <div
+      class="col-6 card mb-3"
+      style="max-width: 18rem"
+      [ngClass]="{
+        'bg-danger': airPollutionData && airPollutionData.so2 > 350,
+        'bg-warning':
+          airPollutionData &&
+          airPollutionData.so2 > 250 &&
+          airPollutionData.so2 <= 350,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.so2 > 250 &&
+            airPollutionData.so2 <= 350) ||
+          (airPollutionData &&
+            airPollutionData.so2 > 20 &&
+            airPollutionData.so2 <= 80),
+        'bg-primary':
+          airPollutionData &&
+          airPollutionData.so2 > 80 &&
+          airPollutionData.so2 <= 250,
+        'bg-light':
+          airPollutionData &&
+          airPollutionData.so2 > 20 &&
+          airPollutionData.so2 <= 80,
+        'bg-success': airPollutionData && airPollutionData.so2 <= 20
+      }"
+    >
+      <div class="card-header">Dwutlenek siarki</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ airPollutionData?.so2 }}</h5>
+      </div>
+    </div>
+    <div
+      class="col-6 card mb-3"
+      style="max-width: 18rem"
+      [ngClass]="{
+        'bg-danger': airPollutionData && airPollutionData.no2 > 200,
+        'bg-warning':
+          airPollutionData &&
+          airPollutionData.no2 > 150 &&
+          airPollutionData.no2 <= 200,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.no2 > 150 &&
+            airPollutionData.no2 <= 200) ||
+          (airPollutionData &&
+            airPollutionData.no2 > 40 &&
+            airPollutionData.no2 <= 70),
+        'bg-primary':
+          airPollutionData &&
+          airPollutionData.no2 > 70 &&
+          airPollutionData.no2 <= 150,
+        'bg-light':
+          airPollutionData &&
+          airPollutionData.no2 > 40 &&
+          airPollutionData.no2 <= 70,
+        'bg-success': airPollutionData && airPollutionData.no2 <= 40
+      }"
+    >
+      <div class="card-header">Dwutlenek azotu</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ airPollutionData?.no2 }}</h5>
+      </div>
+    </div>
+    <div
+      class="col-6 card mb-3"
+      style="max-width: 18rem"
+      [ngClass]="{
+        'bg-danger': airPollutionData && airPollutionData.o3 > 180,
+        'bg-warning':
+          airPollutionData &&
+          airPollutionData.o3 > 140 &&
+          airPollutionData.o3 <= 180,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.o3 > 140 &&
+            airPollutionData.o3 <= 180) ||
+          (airPollutionData &&
+            airPollutionData.o3 > 60 &&
+            airPollutionData.o3 <= 100),
+        'bg-primary':
+          airPollutionData &&
+          airPollutionData.o3 > 100 &&
+          airPollutionData.o3 <= 140,
+        'bg-light':
+          airPollutionData &&
+          airPollutionData.o3 > 60 &&
+          airPollutionData.o3 <= 100,
+        'bg-success': airPollutionData && airPollutionData.o3 <= 60
+      }"
+    >
+      <div class="card-header">Ozon</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ airPollutionData?.o3 }}</h5>
+      </div>
+    </div>
+    <div
+      class="col-6 card mb-3"
+      style="max-width: 18rem"
+      [ngClass]="{
+        'bg-danger': airPollutionData && airPollutionData.co > 15400,
+        'bg-warning':
+          airPollutionData &&
+          airPollutionData.co > 12400 &&
+          airPollutionData.co <= 15400,
+        'text-dark':
+          (airPollutionData &&
+            airPollutionData.co > 12400 &&
+            airPollutionData.co <= 15400) ||
+          (airPollutionData &&
+            airPollutionData.co > 4400 &&
+            airPollutionData.co <= 9400),
+        'bg-primary':
+          airPollutionData &&
+          airPollutionData.co > 9400 &&
+          airPollutionData.co <= 12400,
+        'bg-light':
+          airPollutionData &&
+          airPollutionData.co > 4400 &&
+          airPollutionData.co <= 9400,
+        'bg-success': airPollutionData && airPollutionData.co <= 4400
+      }"
+    >
+      <div class="card-header">Tlenek węgla</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ airPollutionData?.co }}</h5>
       </div>
     </div>
   </div>
