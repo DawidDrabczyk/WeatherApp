@@ -22,10 +22,10 @@ const routes: Route[] = [
       ),
   },
   {
-    path: 'weather-forecast',
+    path: 'weather-forecast-three-hour-step',
     loadComponent: () =>
-      import('./weather/weather-forecast/weather-forecast.component').then(
-        (mod) => mod.WeatherForecastComponent
+      import('./weather/weather-forecast/weather-forecast-three-hour-step/weather-forecast-three-hour-step.component').then(
+        (mod) => mod.WeatherForecastThreeHourStepComponent
       ),
   },
   {

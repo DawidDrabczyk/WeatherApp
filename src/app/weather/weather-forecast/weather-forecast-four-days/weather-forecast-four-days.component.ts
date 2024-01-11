@@ -5,23 +5,23 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { WeatherService } from '../weather.service';
-import { SpinnerComponent } from '../../shared/spinner/spinner.component';
+import { finalize, catchError, throwError } from 'rxjs';
+import { WeatherForecastItemDto } from '../../../models/weather-forecast-item-dto.model';
+import { WeatherService } from '../../weather.service';
 import {
-  DatePipe,
-  DecimalPipe,
-  NgFor,
   NgIf,
+  NgFor,
+  UpperCasePipe,
+  DatePipe,
   NgSwitch,
   NgSwitchCase,
-  UpperCasePipe,
+  DecimalPipe,
 } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { finalize, catchError, throwError } from 'rxjs';
-import { WeatherForecastItemDto } from '../../models/weather-forecast-item-dto.model';
+import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
 
 @Component({
-  selector: 'app-weather-forecast',
+  selector: 'app-weather-forecast-four-days',
   standalone: true,
   imports: [
     SpinnerComponent,
@@ -34,10 +34,10 @@ import { WeatherForecastItemDto } from '../../models/weather-forecast-item-dto.m
     NgSwitchCase,
     DecimalPipe,
   ],
-  templateUrl: './weather-forecast.component.html',
-  styleUrl: './weather-forecast.component.scss',
+  templateUrl: './weather-forecast-four-days.component.html',
+  styleUrl: './weather-forecast-four-days.component.scss',
 })
-export class WeatherForecastComponent implements OnInit, OnDestroy {
+export class WeatherForecastFourDaysComponent implements OnInit, OnDestroy {
   public isSpinner: boolean = false;
   public isFavourite: boolean = false;
 

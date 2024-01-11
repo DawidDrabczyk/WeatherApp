@@ -29,11 +29,46 @@
     </li>
     <li class="nav-item">
       <a
-        class="nav-link"
-        routerLinkActive="active"
-        routerLink="/weather-forecast"
-        >Prognoza pogody</a
+        id="dropdownMenuButton"
+        type="button"
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
+        Prognoza pogody
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/weather-forecast"
+          >Prognoza co 1 godzinę</a
+        >
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/weather-forecast-three-hour-step"
+          >Prognoza co 3 godziny</a
+        >
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/weather-forecast"
+          >Prognoza 4 dniowa</a
+        >
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/weather-forecast"
+          >Prognoza 16 dniowa</a
+        >
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/weather-forecast"
+          >Prognoza 30 dniowa</a
+        >
+      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLinkActive="active" routerLink="/air-pollution"
@@ -113,12 +148,51 @@
       </li>
       <li class="nav-item">
         <a
-          class="nav-link"
-          routerLinkActive="active"
-          routerLink="/weather-forecast"
-          (click)="closeNavigation()"
-          >Prognoza pogody</a
+          id="dropdownMenuButton"
+          type="button"
+          class="nav-link dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
         >
+          Prognoza pogody
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/weather-forecast"
+            (click)="closeNavigation()"
+            >Prognoza co 1 godzinę</a
+          >
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/weather-forecast-three-hour-step"
+            (click)="closeNavigation()"
+            >Prognoza co 3 godziny</a
+          >
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/weather-forecast"
+            (click)="closeNavigation()"
+            >Prognoza 4 dniowa</a
+          >
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/weather-forecast"
+            (click)="closeNavigation()"
+            >Prognoza 16 dniowa</a
+          >
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/weather-forecast"
+            (click)="closeNavigation()"
+            >Prognoza 30 dniowa</a
+          >
+        </div>
       </li>
       <li class="nav-item">
         <a
