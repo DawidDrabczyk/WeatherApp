@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../weather/weather.service';
 import { HttpClient } from '@angular/common/http';
 import { StationDto } from '../models/station-dto.model';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
@@ -8,6 +7,7 @@ import { StationItemComponent } from './station-item/station-item.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { StationService } from './station.service';
 
 @Component({
   selector: 'app-station-list',
@@ -28,7 +28,7 @@ export class StationListComponent implements OnInit {
   public dialogRef: MatDialogRef<StationItemComponent> | undefined;
 
   constructor(
-    private weatherService: WeatherService,
+    private stationService: StationService,
     public dialog: MatDialog
   ) {}
 
@@ -39,7 +39,7 @@ export class StationListComponent implements OnInit {
   public getStationById(stationId: string): void {
     this.showBackdrop = true;
 
-    this.weatherService
+    this.stationService
       .getStationById(stationId)
       .pipe(
         finalize(() => {
@@ -79,7 +79,7 @@ export class StationListComponent implements OnInit {
   private getStationList(): void {
     this.isSpinner = true;
 
-    this.weatherService
+    this.stationService
       .getStationList()
       .pipe(
         finalize(() => {

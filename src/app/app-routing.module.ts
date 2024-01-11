@@ -52,7 +52,7 @@ const routes: Route[] = [
   {
     path: 'favourite',
     loadComponent: () =>
-      import('./favourite-places/favourite-places.component').then(
+      import('./weather/favourite-places/favourite-places.component').then(
         (mod) => mod.FavouritePlacesComponent
       ),
   },

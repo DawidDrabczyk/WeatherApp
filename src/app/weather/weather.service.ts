@@ -1,7 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-import { StationDto } from '../models/station-dto.model';
 import { WeatherItemDto } from '../models/weather-item-dto.model';
 import { WeatherForecastItemDto } from '../models/weather-forecast-item-dto.model';
 import { CityItemDto } from '../models/city-item-dto.models';
@@ -11,8 +10,6 @@ import { AirPollutionDto } from '../models/air-pollution-dto.model';
   providedIn: 'root',
 })
 export class WeatherService {
-  private url: string = 'https://danepubliczne.imgw.pl/api/data';
-
   private apiKey: string = '1b99f2272edc02a59db20170fb27bc32';
   private ulrCurrentWeather: string = 'https://api.openweathermap.org';
 
@@ -20,14 +17,6 @@ export class WeatherService {
   public favouriteItems: Array<WeatherItemDto> = [];
 
   constructor(private http: HttpClient) {}
-
-  public getStationList(): Observable<Array<StationDto>> {
-    return this.http.get<Array<StationDto>>(this.url + '/synop');
-  }
-
-  public getStationById(stationId: string): Observable<StationDto> {
-    return this.http.get<StationDto>(`${this.url}/synop/id/${stationId}`);
-  }
 
   public getWeatherByCityName(
     city: string,
