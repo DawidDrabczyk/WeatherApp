@@ -135,6 +135,12 @@ export class WeatherItemComponent implements OnInit, DoCheck {
 
     this.router.navigate(['/weather-forecast']);
   }
+  
+  public checkAirPollution(weatherItem: WeatherItemDto): void {
+    localStorage.setItem('city', weatherItem.name);
+
+    this.router.navigate(['/air-pollution']);
+  }
 
   private setInputFocus(): void {
     this.inputData.nativeElement.focus();

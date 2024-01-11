@@ -34,6 +34,13 @@ export class AirPollutionComponent implements OnInit {
     setTimeout(() => {
       this.setInputFocus();
     }, 200);
+
+    let cityForWeatherItem = localStorage.getItem('city');
+
+    if (cityForWeatherItem) {
+      this.cityName = cityForWeatherItem;
+      this.getCityByCoordinate(this.cityName);
+    }
   }
 
   public getCityByCoordinate(city: string): void {
@@ -48,6 +55,7 @@ export class AirPollutionComponent implements OnInit {
           if (window.innerWidth < 1200) {
             this.unsetInputFocus();
           }
+          localStorage.clear();
         }),
         catchError((err) => {
           this.errorMessage = `Nie znaleziono miejscowości ${this.cityName}!`;

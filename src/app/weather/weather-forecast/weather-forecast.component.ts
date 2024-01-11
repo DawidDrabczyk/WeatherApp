@@ -49,6 +49,7 @@ export class WeatherForecastComponent implements OnInit, OnDestroy {
   public units?: string;
 
   public averageTemp?: number;
+  public weatherForecastMode?: any;
 
   @ViewChild('input_data') inputData!: ElementRef;
 
@@ -84,6 +85,7 @@ export class WeatherForecastComponent implements OnInit, OnDestroy {
           if (window.innerWidth < 1200) {
             this.unsetInputFocus();
           }
+          localStorage.clear();
         }),
         catchError((err) => {
           this.errorMessage = `Nie znaleziono miejscowości ${this.cityName}!`;

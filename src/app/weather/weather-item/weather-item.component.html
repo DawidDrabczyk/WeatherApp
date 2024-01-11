@@ -162,6 +162,9 @@
         <a class="card-link" (click)="checkWeatherForecast(weatherItem)"
           >Sprawdź prognozę pogody</a
         >
+        <a class="card-link" (click)="checkAirPollution(weatherItem)"
+          >Sprawdź jakość powietrza</a
+        >
         <a
           *ngIf="weatherItem.isFavourite"
           class="card-link"
