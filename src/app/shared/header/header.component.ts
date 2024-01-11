@@ -7,12 +7,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { WeatherItemDto } from '../models/weather-item-dto.model';
-import { WeatherService } from '../weather.service';
+import { WeatherItemDto } from '../../models/weather-item-dto.model';
+import { WeatherService } from '../../weather/weather.service';
 import { NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
 import tippy from 'tippy.js';
-declare var bootstrap: any;
 
 @Component({
   selector: 'app-header',

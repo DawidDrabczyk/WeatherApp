@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WeatherItemDto } from '../models/weather-item-dto.model';
-import { WeatherService } from '../weather.service';
+import { WeatherService } from '../weather/weather.service';
 import {
   DatePipe,
   NgClass,

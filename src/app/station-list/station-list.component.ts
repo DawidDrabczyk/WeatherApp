@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../weather.service';
+import { WeatherService } from '../weather/weather.service';
 import { HttpClient } from '@angular/common/http';
 import { StationDto } from '../models/station-dto.model';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { catchError, finalize, throwError } from 'rxjs';
 import { StationItemComponent } from './station-item/station-item.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';

@@ -8,8 +8,8 @@ import {
 import { WeatherService } from '../weather.service';
 import { catchError, finalize, throwError } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-import { WeatherItemDto } from '../models/weather-item-dto.model';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { WeatherItemDto } from '../../models/weather-item-dto.model';
+import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import {
   DatePipe,
   DecimalPipe,

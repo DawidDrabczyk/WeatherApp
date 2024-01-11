@@ -1,11 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-import { StationDto } from './models/station-dto.model';
-import { WeatherItemDto } from './models/weather-item-dto.model';
-import { WeatherForecastItemDto } from './models/weather-forecast-item-dto.model';
-import { CityItemDto } from './models/city-item-dto.models';
-import { AirPollutionDto } from './models/air-pollution-dto.model';
+import { StationDto } from '../models/station-dto.model';
+import { WeatherItemDto } from '../models/weather-item-dto.model';
+import { WeatherForecastItemDto } from '../models/weather-forecast-item-dto.model';
+import { CityItemDto } from '../models/city-item-dto.models';
+import { AirPollutionDto } from '../models/air-pollution-dto.model';
 
 @Injectable({
   providedIn: 'root',

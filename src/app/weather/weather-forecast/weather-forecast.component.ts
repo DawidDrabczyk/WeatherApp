@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import {
   DatePipe,
   DecimalPipe,
@@ -18,7 +18,7 @@ import {
 } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { finalize, catchError, throwError } from 'rxjs';
-import { WeatherForecastItemDto } from '../models/weather-forecast-item-dto.model';
+import { WeatherForecastItemDto } from '../../models/weather-forecast-item-dto.model';
 
 @Component({
   selector: 'app-weather-forecast',

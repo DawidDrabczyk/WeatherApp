@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { WeatherService } from '../weather.service';
+import { WeatherService } from '../weather/weather.service';
 import { FormsModule } from '@angular/forms';
 import { CityItemDto } from '../models/city-item-dto.models';
 import { NgClass, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { catchError, finalize, map, throwError } from 'rxjs';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { AirPollutionInfo } from '../models/air-pollution-dto.model';
 
 @Component({

@@ -17,14 +17,14 @@ const routes: Route[] = [
   {
     path: 'weather-data',
     loadComponent: () =>
-      import('./weather-item/weather-item.component').then(
+      import('./weather/weather-item/weather-item.component').then(
         (mod) => mod.WeatherItemComponent
       ),
   },
   {
     path: 'weather-forecast',
     loadComponent: () =>
-      import('./weather-forecast/weather-forecast.component').then(
+      import('./weather/weather-forecast/weather-forecast.component').then(
         (mod) => mod.WeatherForecastComponent
       ),
   },
@@ -38,14 +38,14 @@ const routes: Route[] = [
   {
     path: 'webcamera',
     loadComponent: () =>
-      import('./webcamera/webcamera.component').then(
+      import('./web-tv/webcamera/webcamera.component').then(
         (mod) => mod.WebcameraComponent
       ),
   },
   {
     path: 'world-camera',
     loadComponent: () =>
-      import('./world-camera/world-camera.component').then(
+      import('./web-tv/world-camera/world-camera.component').then(
         (mod) => mod.WorldCameraComponent
       ),
   },
