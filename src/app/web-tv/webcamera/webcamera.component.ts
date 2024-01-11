@@ -5,11 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './webcamera.component.html',
-  styleUrl: './webcamera.component.scss'
+  styleUrl: './webcamera.component.scss',
 })
-export class WebcameraComponent {
-
-  handleError(){
-    console.log('error');
-  }
-}
+export class WebcameraComponent {}

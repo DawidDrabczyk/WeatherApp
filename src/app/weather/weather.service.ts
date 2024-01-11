@@ -87,4 +87,21 @@ export class WeatherService {
       }
     );
   }
+  
+  public getFireWeather(
+    lat: number,
+    lon: number
+  ): Observable<AirPollutionDto> {
+    let params = new HttpParams()
+      .set('lat', lat.toString())
+      .set('lon', lon.toString())
+      .set('appid', this.apiKey);
+
+    return this.http.get<AirPollutionDto>(
+      `${this.ulrCurrentWeather}/data/2.5/fwi`,
+      {
+        params: params,
+      }
+    );
+  }
 }
