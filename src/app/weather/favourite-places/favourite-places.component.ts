@@ -5,8 +5,6 @@ import {
   DatePipe,
   NgClass,
   NgFor,
-  NgSwitch,
-  NgSwitchCase,
   UpperCasePipe,
 } from '@angular/common';
 import { Router } from '@angular/router';
@@ -14,7 +12,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-favourite-places',
-    imports: [NgFor, NgSwitch, NgSwitchCase, NgClass, UpperCasePipe, DatePipe],
+    imports: [NgFor, NgClass, UpperCasePipe, DatePipe],
     templateUrl: './favourite-places.component.html',
     styleUrl: './favourite-places.component.scss'
 })

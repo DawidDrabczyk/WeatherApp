@@ -2,14 +2,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { WeatherService } from '../weather/weather.service';
 import { FormsModule } from '@angular/forms';
 import { CityItemDto } from '../models/city-item-dto.models';
-import { NgClass, NgFor, NgIf, UpperCasePipe } from '@angular/common';
+import { NgClass, NgIf, UpperCasePipe } from '@angular/common';
 import { catchError, finalize, map, throwError } from 'rxjs';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { AirPollutionInfo } from '../models/air-pollution-dto.model';
 
 @Component({
     selector: 'app-air-pollution',
-    imports: [FormsModule, NgIf, NgFor, UpperCasePipe, SpinnerComponent, NgClass],
+    imports: [FormsModule, NgIf, UpperCasePipe, SpinnerComponent, NgClass],
     templateUrl: './air-pollution.component.html',
     styleUrl: './air-pollution.component.scss'
 })
