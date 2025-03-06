@@ -1,22 +1,19 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { WeatherItemDto } from '../models/weather-item-dto.model';
 import { WeatherForecastItemDto } from '../models/weather-forecast-item-dto.model';
 import { CityItemDto } from '../models/city-item-dto.models';
 import { AirPollutionDto } from '../models/air-pollution-dto.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class WeatherService {
   private apiKey: string = '1b99f2272edc02a59db20170fb27bc32';
   private ulrCurrentWeather: string = 'https://api.openweathermap.org';
 
   public favouritePlacesArray = new ReplaySubject<Array<WeatherItemDto>>(1);
   public favouriteItems: Array<WeatherItemDto> = [];
-
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   public getWeatherByCityName(
     city: string,
@@ -87,11 +84,8 @@ export class WeatherService {
       }
     );
   }
-  
-  public getFireWeather(
-    lat: number,
-    lon: number
-  ): Observable<AirPollutionDto> {
+
+  public getFireWeather(lat: number, lon: number): Observable<AirPollutionDto> {
     let params = new HttpParams()
       .set('lat', lat.toString())
       .set('lon', lon.toString())

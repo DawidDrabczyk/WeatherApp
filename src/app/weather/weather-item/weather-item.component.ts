@@ -1,7 +1,10 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   DoCheck,
   ElementRef,
+  inject,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -19,22 +22,25 @@ import {
   UpperCasePipe,
 } from '@angular/common';
 import tippy from 'tippy.js';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-weather-item',
-    imports: [
-        FormsModule,
-        SpinnerComponent,
-        NgIf,
-        UpperCasePipe,
-        NgSwitch,
-        NgSwitchCase,
-        DatePipe,
-        DecimalPipe,
-    ],
-    templateUrl: './weather-item.component.html',
-    styleUrl: './weather-item.component.scss'
+  selector: 'app-weather-item',
+  imports: [
+    FormsModule,
+    SpinnerComponent,
+    NgIf,
+    UpperCasePipe,
+    NgSwitch,
+    NgSwitchCase,
+    DatePipe,
+    DecimalPipe,
+  ],
+  standalone: true,
+  templateUrl: './weather-item.component.html',
+  styleUrl: './weather-item.component.scss',
+  providers: [WeatherService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherItemComponent implements OnInit, DoCheck {
   public isSpinner: boolean = false;
@@ -49,7 +55,9 @@ export class WeatherItemComponent implements OnInit, DoCheck {
 
   @ViewChild('input_data') inputData!: ElementRef;
 
-  constructor(private weatherService: WeatherService, private router: Router) {}
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly weatherService = inject(WeatherService);
+  private readonly router = inject(Router);
 
   ngOnInit(): void {
     this.units = 'metric';
@@ -76,6 +84,7 @@ export class WeatherItemComponent implements OnInit, DoCheck {
           if (window.innerWidth < 1200) {
             this.unsetInputFocus();
           }
+          this.cdr.markForCheck();
         }),
         catchError((err) => {
           this.errorMessage = `Nie znaleziono miejscowości ${this.cityName}!`;
@@ -134,7 +143,7 @@ export class WeatherItemComponent implements OnInit, DoCheck {
 
     this.router.navigate(['/weather-forecast']);
   }
-  
+
   public checkAirPollution(weatherItem: WeatherItemDto): void {
     localStorage.setItem('city', weatherItem.name);
 
@@ -164,22 +173,16 @@ export class WeatherItemComponent implements OnInit, DoCheck {
     switch (weatherDesc) {
       case 'Rain':
         return '../../assets/img/weather-icons/rain.png';
-        break;
       case 'Snow':
         return '../../assets/img/weather-icons/snow.jpg';
-        break;
       case 'Thunderstorm':
         return '../../assets/img/weather-icons/thunderstorm.png';
-        break;
       case 'Clear':
         return '../../assets/img/weather-icons/sun.png';
-        break;
       case 'Clouds':
         return '../../assets/img/weather-icons/cloud.png';
-        break;
       case 'Drizzle':
         return '../../assets/img/weather-icons/drizzle.png';
-        break;
       case 'Mist':
       case 'Smoke':
       case 'Haze':
@@ -190,7 +193,6 @@ export class WeatherItemComponent implements OnInit, DoCheck {
       case 'Tornado':
       case 'Fog':
         return '../../assets/img/weather-icons/fog.png';
-        break;
       default:
         return '../../assets/img/weather-icons/unknown.png';
     }

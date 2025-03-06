@@ -1,12 +1,14 @@
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, map, timer } from 'rxjs';
 
 @Component({
     selector: 'app-timer',
     imports: [AsyncPipe, DatePipe],
+    standalone: true,
     templateUrl: './timer.component.html',
-    styleUrl: './timer.component.scss'
+    styleUrl: './timer.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimerComponent implements OnInit {
   public time!: Observable<Date>;

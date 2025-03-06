@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { StationDto } from '../models/station-dto.model';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
@@ -12,9 +12,11 @@ import { StationService } from './station.service';
 @Component({
     selector: 'app-station-list',
     imports: [SpinnerComponent, NgClass, FormsModule],
+    standalone: true,
     templateUrl: './station-list.component.html',
     styleUrl: './station-list.component.scss',
-    providers: [HttpClient]
+    providers: [HttpClient],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StationListComponent implements OnInit {
   public stationList: Array<StationDto> = [];
@@ -26,10 +28,9 @@ export class StationListComponent implements OnInit {
 
   public dialogRef: MatDialogRef<StationItemComponent> | undefined;
 
-  constructor(
-    private stationService: StationService,
-    public dialog: MatDialog
-  ) {}
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly stationService = inject(StationService);
+  private readonly dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.getStationList();
@@ -43,6 +44,7 @@ export class StationListComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.isSpinner = false;
+          this.cdr.markForCheck();
         }),
         catchError((err) => {
           return throwError(() => err);
@@ -59,6 +61,7 @@ export class StationListComponent implements OnInit {
 
         this.dialogRef.afterClosed().subscribe((res) => {
           this.showBackdrop = false;
+          this.cdr.markForCheck();
         });
       });
   }
@@ -83,6 +86,7 @@ export class StationListComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.isSpinner = false;
+          this.cdr.markForCheck();
         }),
         catchError((err) => {
           return throwError(() => err);

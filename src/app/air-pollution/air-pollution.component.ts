@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { WeatherService } from '../weather/weather.service';
 import { FormsModule } from '@angular/forms';
 import { CityItemDto } from '../models/city-item-dto.models';
@@ -8,10 +8,13 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { AirPollutionInfo } from '../models/air-pollution-dto.model';
 
 @Component({
-    selector: 'app-air-pollution',
-    imports: [FormsModule, NgIf, UpperCasePipe, SpinnerComponent, NgClass],
-    templateUrl: './air-pollution.component.html',
-    styleUrl: './air-pollution.component.scss'
+  selector: 'app-air-pollution',
+  imports: [FormsModule, NgIf, UpperCasePipe, SpinnerComponent, NgClass],
+  standalone: true,
+  templateUrl: './air-pollution.component.html',
+  styleUrl: './air-pollution.component.scss',
+  providers: [WeatherService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AirPollutionComponent implements OnInit {
   public isSpinner: boolean = false;
@@ -27,7 +30,8 @@ export class AirPollutionComponent implements OnInit {
 
   @ViewChild('input_data') inputData!: ElementRef;
 
-  constructor(private weatherService: WeatherService) {}
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly weatherService = inject(WeatherService);
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -55,6 +59,7 @@ export class AirPollutionComponent implements OnInit {
             this.unsetInputFocus();
           }
           localStorage.clear();
+          this.cdr.markForCheck();
         }),
         catchError((err) => {
           this.errorMessage = `Nie znaleziono miejscowości ${this.cityName}!`;
@@ -94,6 +99,7 @@ export class AirPollutionComponent implements OnInit {
         }),
         finalize(() => {
           this.isSpinner = false;
+          this.cdr.markForCheck();
         }),
         catchError((err) => {
           return throwError(() => err);

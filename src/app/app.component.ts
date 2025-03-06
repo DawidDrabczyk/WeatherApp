@@ -5,11 +5,12 @@ import { HttpClient } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
 
 @Component({
-    selector: 'app-root',
-    imports: [CommonModule, RouterOutlet, HeaderComponent],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    providers: [HttpClient]
+  selector: 'app-root',
+  imports: [CommonModule, RouterOutlet, HeaderComponent],
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  providers: [HttpClient],
 })
 export class AppComponent {
   title = 'weather-app';

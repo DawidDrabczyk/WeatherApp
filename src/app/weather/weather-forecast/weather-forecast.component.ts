@@ -8,8 +8,11 @@ import {
   DecimalPipe,
 } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
+  inject,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -21,20 +24,23 @@ import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { WeatherService } from '../weather.service';
 
 @Component({
-    selector: 'app-weather-forecast',
-    imports: [
-        SpinnerComponent,
-        NgIf,
-        NgFor,
-        FormsModule,
-        UpperCasePipe,
-        DatePipe,
-        NgSwitch,
-        NgSwitchCase,
-        DecimalPipe,
-    ],
-    templateUrl: './weather-forecast.component.html',
-    styleUrl: './weather-forecast.component.scss'
+  selector: 'app-weather-forecast',
+  imports: [
+    SpinnerComponent,
+    NgIf,
+    NgFor,
+    FormsModule,
+    UpperCasePipe,
+    DatePipe,
+    NgSwitch,
+    NgSwitchCase,
+    DecimalPipe,
+  ],
+  standalone: true,
+  templateUrl: './weather-forecast.component.html',
+  styleUrl: './weather-forecast.component.scss',
+  providers: [WeatherService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WeatherForecast implements OnInit, OnDestroy {
   public isSpinner: boolean = false;
@@ -52,7 +58,8 @@ export class WeatherForecast implements OnInit, OnDestroy {
 
   @ViewChild('input_data') inputData!: ElementRef;
 
-  constructor(private weatherService: WeatherService) {}
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly weatherService = inject(WeatherService);
 
   ngOnInit(): void {
     this.units = 'metric';
@@ -85,6 +92,7 @@ export class WeatherForecast implements OnInit, OnDestroy {
             this.unsetInputFocus();
           }
           localStorage.clear();
+          this.cdr.markForCheck();
         }),
         catchError((err) => {
           this.errorMessage = `Nie znaleziono miejscowości ${this.cityName}!`;
@@ -106,22 +114,16 @@ export class WeatherForecast implements OnInit, OnDestroy {
     switch (weatherDesc) {
       case 'Rain':
         return '../../assets/img/weather-icons/rain.png';
-        break;
       case 'Snow':
         return '../../assets/img/weather-icons/snow.jpg';
-        break;
       case 'Thunderstorm':
         return '../../assets/img/weather-icons/thunderstorm.png';
-        break;
       case 'Clear':
         return '../../assets/img/weather-icons/sun.png';
-        break;
       case 'Clouds':
         return '../../assets/img/weather-icons/cloud.png';
-        break;
       case 'Drizzle':
         return '../../assets/img/weather-icons/drizzle.png';
-        break;
       case 'Mist':
       case 'Smoke':
       case 'Haze':
@@ -132,7 +134,6 @@ export class WeatherForecast implements OnInit, OnDestroy {
       case 'Tornado':
       case 'Fog':
         return '../../assets/img/weather-icons/fog.png';
-        break;
       default:
         return '../../assets/img/weather-icons/unknown.png';
     }

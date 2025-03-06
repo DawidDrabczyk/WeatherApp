@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   OnDestroy,
@@ -14,10 +15,13 @@ import { Subscription } from 'rxjs';
 import tippy from 'tippy.js';
 
 @Component({
-    selector: 'app-header',
-    imports: [RouterModule, NgIf],
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.scss'
+  selector: 'app-header',
+  imports: [RouterModule, NgIf],
+  standalone: true,
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
+  providers: [WeatherService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   public favouriteItems: Array<WeatherItemDto> = [];

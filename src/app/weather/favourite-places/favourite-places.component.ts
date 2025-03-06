@@ -1,26 +1,25 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { WeatherItemDto } from '../../models/weather-item-dto.model';
 import { WeatherService } from '../weather.service';
-import {
-  DatePipe,
-  NgClass,
-  NgFor,
-  UpperCasePipe,
-} from '@angular/common';
+import { DatePipe, NgClass, NgFor, UpperCasePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'app-favourite-places',
-    imports: [NgFor, NgClass, UpperCasePipe, DatePipe],
-    templateUrl: './favourite-places.component.html',
-    styleUrl: './favourite-places.component.scss'
+  selector: 'app-favourite-places',
+  imports: [NgFor, NgClass, UpperCasePipe, DatePipe],
+  standalone: true,
+  templateUrl: './favourite-places.component.html',
+  styleUrl: './favourite-places.component.scss',
+  providers: [WeatherService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavouritePlacesComponent implements OnInit, OnDestroy {
   public favouriteItems!: Array<WeatherItemDto>;
   private subscription?: Subscription;
 
-  constructor(private weatherService: WeatherService, private router: Router) {}
+  private readonly weatherService = inject(WeatherService);
+  private readonly router = inject(Router);
 
   ngOnInit(): void {
     this.getFavouriteList();

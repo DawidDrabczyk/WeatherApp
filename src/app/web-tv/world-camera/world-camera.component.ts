@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-world-camera',
-    imports: [],
     templateUrl: './world-camera.component.html',
-    styleUrl: './world-camera.component.scss'
+    standalone: true,
+    styleUrl: './world-camera.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WorldCameraComponent {
 

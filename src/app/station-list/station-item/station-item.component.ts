@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { StationDto } from '../../models/station-dto.model';
 import { DatePipe, NgStyle, UpperCasePipe } from '@angular/common';
@@ -6,8 +6,10 @@ import { DatePipe, NgStyle, UpperCasePipe } from '@angular/common';
 @Component({
     selector: 'app-station-item',
     imports: [UpperCasePipe, DatePipe, NgStyle],
+    standalone: true,
     templateUrl: './station-item.component.html',
-    styleUrl: './station-item.component.scss'
+    styleUrl: './station-item.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StationItemComponent implements OnInit {
   public stationItem: StationDto | undefined;
