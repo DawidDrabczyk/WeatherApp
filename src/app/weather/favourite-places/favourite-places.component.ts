@@ -13,11 +13,10 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-favourite-places',
-  standalone: true,
-  imports: [NgFor, NgSwitch, NgSwitchCase, NgClass, UpperCasePipe, DatePipe],
-  templateUrl: './favourite-places.component.html',
-  styleUrl: './favourite-places.component.scss',
+    selector: 'app-favourite-places',
+    imports: [NgFor, NgSwitch, NgSwitchCase, NgClass, UpperCasePipe, DatePipe],
+    templateUrl: './favourite-places.component.html',
+    styleUrl: './favourite-places.component.scss'
 })
 export class FavouritePlacesComponent implements OnInit, OnDestroy {
   public favouriteItems!: Array<WeatherItemDto>;

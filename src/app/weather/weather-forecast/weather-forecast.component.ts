@@ -21,21 +21,20 @@ import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { WeatherService } from '../weather.service';
 
 @Component({
-  selector: 'app-weather-forecast',
-  standalone: true,
-  imports: [
-    SpinnerComponent,
-    NgIf,
-    NgFor,
-    FormsModule,
-    UpperCasePipe,
-    DatePipe,
-    NgSwitch,
-    NgSwitchCase,
-    DecimalPipe,
-  ],
-  templateUrl: './weather-forecast.component.html',
-  styleUrl: './weather-forecast.component.scss',
+    selector: 'app-weather-forecast',
+    imports: [
+        SpinnerComponent,
+        NgIf,
+        NgFor,
+        FormsModule,
+        UpperCasePipe,
+        DatePipe,
+        NgSwitch,
+        NgSwitchCase,
+        DecimalPipe,
+    ],
+    templateUrl: './weather-forecast.component.html',
+    styleUrl: './weather-forecast.component.scss'
 })
 export class WeatherForecast implements OnInit, OnDestroy {
   public isSpinner: boolean = false;

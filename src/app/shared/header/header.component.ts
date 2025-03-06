@@ -14,11 +14,10 @@ import { Subscription } from 'rxjs';
 import tippy from 'tippy.js';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [RouterModule, NgIf],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+    selector: 'app-header',
+    imports: [RouterModule, NgIf],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   public favouriteItems: Array<WeatherItemDto> = [];

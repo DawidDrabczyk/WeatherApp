@@ -4,11 +4,10 @@ import { StationDto } from '../../models/station-dto.model';
 import { DatePipe, NgStyle, UpperCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-station-item',
-  standalone: true,
-  imports: [UpperCasePipe, DatePipe, NgStyle],
-  templateUrl: './station-item.component.html',
-  styleUrl: './station-item.component.scss',
+    selector: 'app-station-item',
+    imports: [UpperCasePipe, DatePipe, NgStyle],
+    templateUrl: './station-item.component.html',
+    styleUrl: './station-item.component.scss'
 })
 export class StationItemComponent implements OnInit {
   public stationItem: StationDto | undefined;

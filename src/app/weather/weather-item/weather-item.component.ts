@@ -22,20 +22,19 @@ import tippy from 'tippy.js';
 import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-weather-item',
-  standalone: true,
-  imports: [
-    FormsModule,
-    SpinnerComponent,
-    NgIf,
-    UpperCasePipe,
-    NgSwitch,
-    NgSwitchCase,
-    DatePipe,
-    DecimalPipe,
-  ],
-  templateUrl: './weather-item.component.html',
-  styleUrl: './weather-item.component.scss',
+    selector: 'app-weather-item',
+    imports: [
+        FormsModule,
+        SpinnerComponent,
+        NgIf,
+        UpperCasePipe,
+        NgSwitch,
+        NgSwitchCase,
+        DatePipe,
+        DecimalPipe,
+    ],
+    templateUrl: './weather-item.component.html',
+    styleUrl: './weather-item.component.scss'
 })
 export class WeatherItemComponent implements OnInit, DoCheck {
   public isSpinner: boolean = false;

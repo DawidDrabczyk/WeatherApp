@@ -8,11 +8,10 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { AirPollutionInfo } from '../models/air-pollution-dto.model';
 
 @Component({
-  selector: 'app-air-pollution',
-  standalone: true,
-  imports: [FormsModule, NgIf, NgFor, UpperCasePipe, SpinnerComponent, NgClass],
-  templateUrl: './air-pollution.component.html',
-  styleUrl: './air-pollution.component.scss',
+    selector: 'app-air-pollution',
+    imports: [FormsModule, NgIf, NgFor, UpperCasePipe, SpinnerComponent, NgClass],
+    templateUrl: './air-pollution.component.html',
+    styleUrl: './air-pollution.component.scss'
 })
 export class AirPollutionComponent implements OnInit {
   public isSpinner: boolean = false;

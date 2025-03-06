@@ -10,12 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { StationService } from './station.service';
 
 @Component({
-  selector: 'app-station-list',
-  standalone: true,
-  imports: [SpinnerComponent, NgClass, FormsModule],
-  templateUrl: './station-list.component.html',
-  styleUrl: './station-list.component.scss',
-  providers: [HttpClient],
+    selector: 'app-station-list',
+    imports: [SpinnerComponent, NgClass, FormsModule],
+    templateUrl: './station-list.component.html',
+    styleUrl: './station-list.component.scss',
+    providers: [HttpClient]
 })
 export class StationListComponent implements OnInit {
   public stationList: Array<StationDto> = [];
