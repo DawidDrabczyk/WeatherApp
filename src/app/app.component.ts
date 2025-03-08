@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,15 @@ import { HeaderComponent } from './shared/header/header.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [HttpClient],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  title = 'weather-app';
+  public readonly title = 'weather-app';
+  public login!: string | null;
+
+  constructor() {
+    if (localStorage.getItem('login')) {
+      this.login = localStorage.getItem('login');
+    }
+  }
 }

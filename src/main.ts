@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app/app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { provideRouter, withViewTransitions } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { routes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
@@ -14,6 +15,7 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(AppRoutingModule),
     importProvidersFrom(MatDialogModule),
     importProvidersFrom(FontAwesomeModule),
-    provideRouter(routes, withViewTransitions())
+    importProvidersFrom(BrowserAnimationsModule),
+    provideRouter(routes, withViewTransitions()),
   ],
 }).catch((err) => console.error(err));
