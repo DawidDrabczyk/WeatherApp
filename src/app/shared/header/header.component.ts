@@ -1,8 +1,11 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
+  effect,
   ElementRef,
+  inject,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -13,6 +16,7 @@ import { WeatherService } from '../../weather/weather.service';
 import { NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
 import tippy from 'tippy.js';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -21,18 +25,29 @@ import tippy from 'tippy.js';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   providers: [WeatherService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
+  public loggedInApp!: boolean;
   public favouriteItems: Array<WeatherItemDto> = [];
   private subscription?: Subscription;
+  private readonly authService = inject(AuthService);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   @ViewChild('navbarNav', { static: false }) navbarNav?: ElementRef;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService) {
+    effect(() => {
+      this.loggedInApp = this.authService.loggedIn();
+      this.cdr.markForCheck();
+      console.log(this.loggedInApp);
+    });
+  }
 
   ngOnInit(): void {
     this.getFavouriteList();
+
+    this.startLoginListener();
   }
 
   ngOnDestroy(): void {
@@ -43,6 +58,10 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
     tippy('#logoBtn', {
       content: 'Przejdź do strony głównej',
     });
+  }
+
+  private startLoginListener(): void {
+    this.authService.loggedIn();
   }
 
   public closeNavigation() {
@@ -57,5 +76,9 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
         this.favouriteItems = res;
       }
     );
+  }
+
+  public onLogout(): void {
+    this.authService.toLogout();
   }
 }

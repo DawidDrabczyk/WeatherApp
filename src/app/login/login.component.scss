@@ -1,7 +1,11 @@
-.card {
-  width: 60%;
+.row {
+  margin-top: 1em;
 
-  .card-body {
-    flex-direction: column;
+  .card {
+    width: 60%;
+
+    .card-body {
+      flex-direction: column;
+    }
   }
 }

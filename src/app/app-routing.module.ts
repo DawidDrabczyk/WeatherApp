@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
+import { authGuard } from './shared/guards/auth.guard';
 
 const routes: Route[] = [
   {
@@ -16,6 +17,7 @@ const routes: Route[] = [
   {
     path: 'home',
     component: HomePageComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'list',
@@ -23,6 +25,7 @@ const routes: Route[] = [
       import('./station-list/station-list.component').then(
         (mod) => mod.StationListComponent
       ),
+    canActivate: [authGuard],
   },
   {
     path: 'weather-data',
@@ -30,6 +33,7 @@ const routes: Route[] = [
       import('./weather/weather-item/weather-item.component').then(
         (mod) => mod.WeatherItemComponent
       ),
+    canActivate: [authGuard],
   },
   {
     path: 'weather-forecast',
@@ -37,6 +41,7 @@ const routes: Route[] = [
       import('./weather/weather-forecast/weather-forecast.component').then(
         (mod) => mod.WeatherForecast
       ),
+    canActivate: [authGuard],
   },
   {
     path: 'air-pollution',
@@ -44,6 +49,7 @@ const routes: Route[] = [
       import('./air-pollution/air-pollution.component').then(
         (mod) => mod.AirPollutionComponent
       ),
+    canActivate: [authGuard],
   },
   {
     path: 'webcamera',
@@ -51,6 +57,7 @@ const routes: Route[] = [
       import('./web-tv/webcamera/webcamera.component').then(
         (mod) => mod.WebcameraComponent
       ),
+    canActivate: [authGuard],
   },
   {
     path: 'world-camera',
@@ -58,6 +65,7 @@ const routes: Route[] = [
       import('./web-tv/world-camera/world-camera.component').then(
         (mod) => mod.WorldCameraComponent
       ),
+    canActivate: [authGuard],
   },
   {
     path: 'favourite',
@@ -65,6 +73,7 @@ const routes: Route[] = [
       import('./weather/favourite-places/favourite-places.component').then(
         (mod) => mod.FavouritePlacesComponent
       ),
+    canActivate: [authGuard],
   },
 ];
 

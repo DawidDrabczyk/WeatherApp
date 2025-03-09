@@ -6,8 +6,12 @@ import { AppRoutingModule } from './app/app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { provideRouter, withViewTransitions } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  BrowserAnimationsModule,
+  provideAnimations,
+} from '@angular/platform-browser/animations';
 import { routes } from './app/app.routes';
+import { provideToastr } from 'ngx-toastr';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -17,5 +21,13 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(FontAwesomeModule),
     importProvidersFrom(BrowserAnimationsModule),
     provideRouter(routes, withViewTransitions()),
+    provideAnimations(),
+    provideToastr({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      timeOut: 5000,
+      extendedTimeOut: 2000,
+      progressBar: true,
+    }),
   ],
 }).catch((err) => console.error(err));
