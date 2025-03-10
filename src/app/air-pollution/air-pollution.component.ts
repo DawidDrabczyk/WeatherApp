@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { WeatherService } from '../weather/weather.service';
 import { FormsModule } from '@angular/forms';
 import { CityItemDto } from '../models/city-item-dto.models';
@@ -6,6 +14,8 @@ import { NgClass, NgIf, UpperCasePipe } from '@angular/common';
 import { catchError, finalize, map, throwError } from 'rxjs';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { AirPollutionInfo } from '../models/air-pollution-dto.model';
+import { MessageStatus } from '../shared/enums/message-status.enum';
+import { MessagesService } from '../shared/services/messages.service';
 
 @Component({
   selector: 'app-air-pollution',
@@ -14,7 +24,7 @@ import { AirPollutionInfo } from '../models/air-pollution-dto.model';
   templateUrl: './air-pollution.component.html',
   styleUrl: './air-pollution.component.scss',
   providers: [WeatherService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AirPollutionComponent implements OnInit {
   public isSpinner: boolean = false;
@@ -30,8 +40,10 @@ export class AirPollutionComponent implements OnInit {
 
   @ViewChild('input_data') inputData!: ElementRef;
 
+  public messageStatus = MessageStatus;
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly weatherService = inject(WeatherService);
+  private readonly messagesService = inject(MessagesService);
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -47,39 +59,28 @@ export class AirPollutionComponent implements OnInit {
   }
 
   public getCityByCoordinate(city: string): void {
-    this.isSpinner = true;
+    this.handleSpinner(true);
 
     this.weatherService
       .getCityByCoordinate(city, 1)
       .pipe(
         finalize(() => {
-          this.isSpinner = false;
+          this.handleSpinner(false);
           this.cityName = '';
           if (window.innerWidth < 1200) {
             this.unsetInputFocus();
           }
           localStorage.clear();
-          this.cdr.markForCheck();
         }),
         catchError((err) => {
-          this.errorMessage = `Nie znaleziono miejscowości ${this.cityName}!`;
+          this.showErrorMsg(
+            'Wystąpił błąd podczas pobierania informacji o miejscowości'
+          );
           return throwError(() => err);
         })
       )
       .subscribe((res) => {
-        if (res[0]) {
-          this.lat = res[0].lat;
-          this.lon = res[0].lon;
-          this.cityItem = res[0];
-          this.errorMessage = null;
-
-          if (this.lat !== undefined && this.lon !== undefined) {
-            this.getAirPollution(this.lat, this.lon);
-          }
-        } else {
-          this.cityItem = null;
-          this.errorMessage = `Nie znaleziono miejscowości ${this.cityName}!`;
-        }
+        this.handleCityData(res[0]);
 
         setTimeout(() => {
           this.setInputFocus();
@@ -87,8 +88,25 @@ export class AirPollutionComponent implements OnInit {
       });
   }
 
+  private handleCityData(city: CityItemDto): void {
+    if (city) {
+      this.lat = city.lat;
+      this.lon = city.lon;
+      this.cityItem = city;
+      this.errorMessage = null;
+
+      if (this.lat !== undefined && this.lon !== undefined) {
+        this.getAirPollution(this.lat, this.lon);
+      }
+    } else {
+      this.showErrorMsg(
+        'Nie znaleziono podanej miejscowości - spróbuj ponownie'
+      );
+    }
+  }
+
   private getAirPollution(lat: number, lon: number): void {
-    this.isSpinner = true;
+    this.handleSpinner(true);
 
     this.weatherService
       .getAirPollution(lat, lon)
@@ -97,10 +115,7 @@ export class AirPollutionComponent implements OnInit {
           const components = res.list[0].components;
           return components;
         }),
-        finalize(() => {
-          this.isSpinner = false;
-          this.cdr.markForCheck();
-        }),
+        finalize(() => this.handleSpinner(false)),
         catchError((err) => {
           return throwError(() => err);
         })
@@ -116,5 +131,16 @@ export class AirPollutionComponent implements OnInit {
 
   private unsetInputFocus(): void {
     this.inputData.nativeElement.blur();
+  }
+
+  private handleSpinner(isSpinner: boolean): void {
+    this.isSpinner = isSpinner;
+    this.cdr.markForCheck();
+  }
+
+  private showErrorMsg(message: string): void {
+    this.cityItem = null;
+    this.errorMessage = message;
+    this.messagesService.showMessage(message, this.messageStatus.Error);
   }
 }
