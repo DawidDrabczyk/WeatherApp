@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
     effect(() => {
       this.loggedInApp = this.authService.loggedIn();
       this.cdr.markForCheck();
-      console.log(this.loggedInApp);
     });
   }
 

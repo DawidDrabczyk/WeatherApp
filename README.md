@@ -1,5 +1,8 @@
 # WeatherApp
 
+Login: User
+Password: 123
+
 Description:
 Weather App is a comprehensive and user-friendly application designed to deliver real-time weather information from a variety of IMGW (Institute of Meteorology and Water Management) stations. Whether you're interested in current weather conditions, planning your upcoming activities, or monitoring air quality, this app has you covered.
 

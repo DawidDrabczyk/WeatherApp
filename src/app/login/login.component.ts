@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
 import { MessagesService } from '../shared/services/messages.service';
@@ -38,7 +34,6 @@ export class LoginComponent {
 
   private isInvalidForm(): boolean {
     if (!this.login || !this.password) {
-      console.log('Proszę uzupełnić dane logowania');
       this.errorMsg = 'Proszę uzupełnić dane logowania';
       return true;
     }

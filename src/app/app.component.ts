@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
-import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +13,6 @@ import { AuthService } from './shared/services/auth.service';
   providers: [HttpClient],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   public readonly title = 'weather-app';
-  private readonly authService = inject(AuthService)
-  public loggedInApp!: boolean;
-
-  ngOnInit(): void {
-    this.loggedInApp = this.authService.loggedIn();
-  }
 }
