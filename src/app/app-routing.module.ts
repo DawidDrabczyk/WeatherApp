@@ -3,6 +3,7 @@ import { Route, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './shared/guards/auth.guard';
+import { loginGuard } from './shared/guards/login.guard';
 
 const routes: Route[] = [
   {
@@ -13,6 +14,7 @@ const routes: Route[] = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [loginGuard],
   },
   {
     path: 'home',
@@ -74,6 +76,13 @@ const routes: Route[] = [
         (mod) => mod.FavouritePlacesComponent
       ),
     canActivate: [authGuard],
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./shared/page-not-found/page-not-found.component').then(
+        (mod) => mod.PageNotFoundComponent
+      ),
   },
 ];
 

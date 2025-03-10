@@ -1,3 +1,4 @@
+@defer(on viewport){
 <div class="row" [ngClass]="{ hidden_background: showBackdrop }">
   @if (isSpinner) {
   <div class="col-12 spinner_container">
@@ -36,7 +37,12 @@
   </div>
   }
 </div>
+
 @if (showBackdrop) {
 
 <div class="backdrop"></div>
+} } @placeholder {
+<div class="col-12 spinner_container">
+  <app-spinner></app-spinner>
+</div>
 }
